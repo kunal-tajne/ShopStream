@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "@mui/material";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 
-export default function HomeSectionButtonRight() {
+export default function HomeSectionButtonLeft() {
   return (
     <Button
       variant="contained"
