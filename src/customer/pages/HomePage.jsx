@@ -1,15 +1,46 @@
-import React from 'react'
-import TopCarousel from '../components/HomePageCarousel/TopCarousel'
-import { HomeSectionCarousel } from '../components/HomeSectionCarousel/HomeSectionCarousel'
+import React from "react";
+import TopCarousel from "../components/HomePageCarousel/TopCarousel";
+import { HomeSectionCarousel } from "../components/HomeSectionCarousel/HomeSectionCarousel";
+import { HomeSectionCard } from "../components/HomeSectionCard/HomeSectionCard";
+import { NewArrivalsCard } from "../components/HomeSectionCard/NewArrivalsCard";
+import { newArrivals } from "../../Data/newArrivals";
+import { banner } from "../../Data/banner";
 
 export const HomePage = () => {
   return (
     <div>
-    <TopCarousel/> 
+      <TopCarousel />
 
-    <div className='space-y-10 py-10 justify-center'>
-    <HomeSectionCarousel/>
+      <div className="space-y-10 py-5 justify-center px-6">
+        
+        <HomeSectionCarousel
+          data={newArrivals}
+          sectionName={"New Arrivals"}
+          HomeSectionCard={NewArrivalsCard}
+        />
+        <div><img src={banner.Banner3} alt="Men's Clothing Offer Banner"/></div>
+        
+        <HomeSectionCarousel
+          data={newArrivals}
+          sectionName={"New Arrivals"}
+          HomeSectionCard={HomeSectionCard}
+        />
+        <HomeSectionCarousel
+          data={newArrivals}
+          sectionName={"New Arrivals"}
+          HomeSectionCard={HomeSectionCard}
+        />
+        <HomeSectionCarousel
+          data={newArrivals}
+          sectionName={"New Arrivals"}
+          HomeSectionCard={HomeSectionCard}
+        />
+        <HomeSectionCarousel
+          data={newArrivals}
+          sectionName={"New Arrivals"}
+          HomeSectionCard={HomeSectionCard}
+        />
+      </div>
     </div>
-    </div>
-  )
-}
+  );
+};
