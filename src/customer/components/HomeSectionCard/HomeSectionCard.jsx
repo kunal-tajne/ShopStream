@@ -1,6 +1,6 @@
 import React from "react";
 
-export const HomeSectionCard = ({product}) => {
+export const HomeSectionCard = ({ product}) => {
   return (
     <div className="cursor-pointer flex flex-col items-center bg-white rounded-lg shadow-lg overflow-hidden w-[15rem] mx-3 border">
       <div className="h-[13rem] w-[10rem]">

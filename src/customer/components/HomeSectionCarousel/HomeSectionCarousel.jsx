@@ -73,7 +73,7 @@ export const HomeSectionCarousel = ({data, sectionName, HomeSectionCard}) => {
 
   return (
     <div className="border">
-      <h2 className="text-2xl font-extrabold text-gray-800 py-5 px-8">{sectionName}</h2>
+      <h2 className="text-2xl font-extrabold text-gray-800 py-5 px-8" style={{ fontFamily: 'Roboto, sans-serif' }}>{sectionName}</h2>
       <div className="relative p-5">
         <AliceCarousel
           items={items}

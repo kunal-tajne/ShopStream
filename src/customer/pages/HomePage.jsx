@@ -22,22 +22,22 @@ export const HomePage = () => {
         
         <HomeSectionCarousel
           data={newArrivals}
-          sectionName={"New Arrivals"}
+          sectionName={"Men's Latest Collection"}
           HomeSectionCard={HomeSectionCard}
         />
         <HomeSectionCarousel
           data={newArrivals}
-          sectionName={"New Arrivals"}
+          sectionName={"Women's Latest Collection"}
           HomeSectionCard={HomeSectionCard}
         />
         <HomeSectionCarousel
           data={newArrivals}
-          sectionName={"New Arrivals"}
+          sectionName={"Accessories"}
           HomeSectionCard={HomeSectionCard}
         />
         <HomeSectionCarousel
           data={newArrivals}
-          sectionName={"New Arrivals"}
+          sectionName={"ShopStream Favorites"}
           HomeSectionCard={HomeSectionCard}
         />
       </div>
