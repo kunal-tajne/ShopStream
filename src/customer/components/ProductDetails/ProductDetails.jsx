@@ -2,7 +2,9 @@ import { useState } from "react";
 import { StarIcon } from "@heroicons/react/20/solid";
 import { RadioGroup } from "@headlessui/react";
 import { Grid, Rating } from "@mui/material";
-import ShoppingBagRoundedIcon from '@mui/icons-material/ShoppingBagRounded';
+import ShoppingBagRoundedIcon from "@mui/icons-material/ShoppingBagRounded";
+import ProductReviewCard from "./ProductReviewCard";
+import { ProducReviewData } from "./ProductReviewData";
 
 const product = {
   name: "Basic Tee 6-Pack",
@@ -290,10 +292,8 @@ export default function ProductDetails() {
                   </RadioGroup>
                 </div>
 
-                <button
-                  className="mt-6 flex w-60 items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" 
-                >
-                <ShoppingBagRoundedIcon className="mr-2"/>
+                <button className="mt-6 flex w-60 items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                  <ShoppingBagRoundedIcon className="mr-2" />
                   Add to bag
                 </button>
               </form>
@@ -340,17 +340,19 @@ export default function ProductDetails() {
 
         {/* Rating and Reviews */}
         <section>
-        <h1 className=" font-semibold items-center text-lg p-4 text-center underline">All Ratings and Reviews</h1>
+          <h1 className=" font-semibold items-center text-lg p-4 text-center underline">
+            All Ratings and Reviews
+          </h1>
 
-        <div className="border p-5">
-        <Grid container spacing={7}>
-        <Grid item xs={6}>Hello</Grid>
-
-        </Grid>
-
-
-        </div>
-
+          <div className="border p-5">
+            <Grid container spacing={7}>
+              <Grid item xs={6}>
+                {ProducReviewData.map((currReview) => (
+                  <ProductReviewCard review={currReview} />
+                ))}
+              </Grid>
+            </Grid>
+          </div>
         </section>
       </div>
     </div>
