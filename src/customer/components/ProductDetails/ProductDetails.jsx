@@ -1,10 +1,14 @@
 import { useState } from "react";
 import { StarIcon } from "@heroicons/react/20/solid";
 import { RadioGroup } from "@headlessui/react";
-import { Grid, Rating } from "@mui/material";
+import { Box, Grid, LinearProgress, Rating } from "@mui/material";
 import ShoppingBagRoundedIcon from "@mui/icons-material/ShoppingBagRounded";
 import ProductReviewCard from "./ProductReviewCard";
 import { ProducReviewData } from "./ProductReviewData";
+import ProductRatings from "./ProductRatings";
+import { newArrivals } from "../../../Data/newArrivals";
+import { NewArrivalsCard } from "../HomeSectionCard/NewArrivalsCard";
+import { HomeSectionCard } from "../HomeSectionCard/HomeSectionCard";
 
 const product = {
   name: "Basic Tee 6-Pack",
@@ -339,7 +343,7 @@ export default function ProductDetails() {
         </section>
 
         {/* Rating and Reviews */}
-        <section>
+        <section className="p-5">
           <h1 className=" font-semibold items-center text-lg p-4 text-center underline">
             All Ratings and Reviews
           </h1>
@@ -347,13 +351,41 @@ export default function ProductDetails() {
           <div className="border p-5">
             <Grid container spacing={7}>
               <Grid item xs={6}>
+              <h1 className="text-xl font-semibold pb-1 text-center">
+                  Product Reviews
+                </h1>
                 {ProducReviewData.map((currReview) => (
                   <ProductReviewCard review={currReview} />
                 ))}
               </Grid>
+
+              <Grid item xs={5}>
+                <h1 className="text-xl font-semibold pb-1 text-center">
+                  Product Ratings
+                </h1>
+                <div className="flex items-center space-x-5">
+                  <Rating value={4.6} precision={0.5} read-only />
+                  <p className=" opacity-80">5980 Ratings</p>
+                </div>
+                <ProductRatings rating={"Excellent"} value={80} color={"success"} />
+                <ProductRatings rating={"Very Good"} value={60} color={"success"}/>
+                <ProductRatings rating={"Good"} value={70} color={"secondary"}/>
+                <ProductRatings rating={"Average"} value={40} color={"warning"}/>
+                <ProductRatings rating={"Poor"} value={20} color={"error"}/>
+              </Grid>
             </Grid>
           </div>
         </section>
+
+        {/*Similar Products*/}
+
+        <section className="p-2">
+        <h1 className="py-5 text-xl font-bold">Similar Products</h1>
+        <div className="flex flex-wrap p-5 space-y-5 cursor-pointer">
+          {newArrivals.map((item) => <NewArrivalsCard product={item}/>)}
+        </div>
+        </section>
+
       </div>
     </div>
   );

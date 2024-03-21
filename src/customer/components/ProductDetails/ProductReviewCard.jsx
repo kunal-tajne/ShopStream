@@ -28,12 +28,6 @@ const ProductReviewCard = ({ review }) => {
           />
           <div className=" text-lg">{review.description}</div>
         </Grid>
-
-        <Grid item={5}>
-        
-
-
-        </Grid>
       </Grid>
     </div>
   );
