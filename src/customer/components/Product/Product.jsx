@@ -10,14 +10,21 @@ import {
 } from "@heroicons/react/20/solid";
 import { newArrivals } from "../../../Data/newArrivals";
 import ProductCard from "./ProductCard";
-import { filters, singleFilter } from "./FilterData";
-import FilterListIcon from '@mui/icons-material/FilterList';
+import { color, filters, singleFilter } from "./FilterData";
+import FilterListIcon from "@mui/icons-material/FilterList";
+import {
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Radio,
+  RadioGroup,
+} from "@mui/material";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const sortOptions = [
   { name: "Price: Low to High", href: "#", current: false },
   { name: "Price: High to Low", href: "#", current: false },
 ];
-
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -25,6 +32,65 @@ function classNames(...classes) {
 
 export default function Product() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const location = useLocation()
+  const navigate = useNavigate()
+  
+  const handleFilter = (value, sectionId) =>
+  {
+    //Gets the url of current page. For example https://example.com/search?category=electronics&&category=clothing&&category=books 
+    
+    //gives: ?category=electronics&&category=clothing&&category=books
+    const searchParameters = new URLSearchParams(location.search) 
+
+    //Here we will get if sectionid = category
+    //we get : ["electronics,clothing,books"] single string at array[0]
+    let filterValue = searchParameters.getAll(sectionId)
+
+    //Here if the value is present we remove it from the string, for uncheck/untick of box
+    if(filterValue.length > 0 && filterValue[0].split(",").includes(value))
+    {
+      filterValue = filterValue[0].split(",").filter((item) => item != value)
+
+      if(filterValue.length === 0)
+    {
+      searchParameters.delete(sectionId)
+    }
+    }
+    //else we add the value in array
+    else
+    {
+      filterValue.push(value)
+      
+    }
+    //Here we combine update the strick whether it is checked or uncheked and then give it to navigation to  proceed to the query page
+    if(filterValue.length > 0)
+    {
+      //convert the array into one string by join method
+      searchParameters.set(sectionId, filterValue.join(",")) 
+    }
+
+    //convert to string
+    const query = searchParameters.toString();
+
+    //send query to navigate
+    navigate({search:`?${query}`}) 
+    
+   
+  }
+
+  const handleSingleFilter = (e, sectionId) => 
+  {
+    const searchParameters = new URLSearchParams(location.search) 
+    
+    searchParameters.set(sectionId, e.target.value)
+
+    //convert to string
+    const query = searchParameters.toString();
+
+    //send query to navigate
+    navigate({search:`?${query}`}) 
+  }
+
 
   return (
     <div className="bg-white">
@@ -79,8 +145,7 @@ export default function Product() {
                     <ul
                       role="list"
                       className="px-2 py-3 font-medium text-gray-900"
-                    >
-                    </ul>
+                    ></ul>
 
                     {filters.map((section) => (
                       <Disclosure
@@ -118,6 +183,7 @@ export default function Product() {
                                     className="flex items-center"
                                   >
                                     <input
+                                    onChange={() => handleFilter(option.value, section.id)}
                                       id={`filter-mobile-${section.id}-${optionIdx}`}
                                       name={`${section.id}[]`}
                                       defaultValue={option.value}
@@ -169,27 +235,24 @@ export default function Product() {
                             </h3>
                             <Disclosure.Panel className="pt-6">
                               <div className="space-y-6">
-                                {section.options.map((option, optionIdx) => (
-                                  <div
-                                    key={option.value}
-                                    className="flex items-center"
-                                  >
-                                    <input
-                                      id={`filter-mobile-${section.id}-${optionIdx}`}
-                                      name={`${section.id}[]`}
-                                      defaultValue={option.value}
-                                      type="checkbox"
-                                      defaultChecked={option.checked}
-                                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                                    />
-                                    <label
-                                      htmlFor={`filter-mobile-${section.id}-${optionIdx}`}
-                                      className="ml-3 min-w-0 flex-1 text-gray-500"
-                                    >
-                                      {option.label}
-                                    </label>
-                                  </div>
-                                ))}
+                              <FormControl>
+                                <RadioGroup
+                                  aria-labelledby="demo-radio-buttons-group-label"
+                                  defaultValue="female"
+                                  name="radio-buttons-group"
+                                >
+                                  {section.options.map((option, optionIdx) => (
+                                    <>
+                                      <FormControlLabel
+                                        onChange={(e) => handleSingleFilter(e, section.id)}
+                                        value={option.value}
+                                        control={<Radio />}
+                                        label={option.label}
+                                      />
+                                    </>
+                                  ))}
+                                </RadioGroup>
+                                </FormControl>
                               </div>
                             </Disclosure.Panel>
                           </>
@@ -281,16 +344,15 @@ export default function Product() {
             <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
               {/* Filters */}
               <form className="hidden lg:block">
-              <div className="flex justify-between items-center">
-              <h1 className="text-md opacity-80 font-bold">Filters</h1>
-                <FilterListIcon/>
-              </div>
-                
+                <div className="flex justify-between items-center">
+                  <h1 className="text-md opacity-80 font-bold">Filters</h1>
+                  <FilterListIcon />
+                </div>
+
                 <ul
                   role="list"
                   className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900"
-                >
-                </ul>
+                ></ul>
 
                 {filters.map((section) => (
                   <Disclosure
@@ -327,7 +389,9 @@ export default function Product() {
                                 key={option.value}
                                 className="flex items-center"
                               >
+                              
                                 <input
+                                onChange={() => handleFilter(option.value, section.id)}
                                   id={`filter-${section.id}-${optionIdx}`}
                                   name={`${section.id}[]`}
                                   defaultValue={option.value}
@@ -377,29 +441,27 @@ export default function Product() {
                             </span>
                           </Disclosure.Button>
                         </h3>
+
                         <Disclosure.Panel className="pt-6">
                           <div className="space-y-4">
-                            {section.options.map((option, optionIdx) => (
-                              <div
-                                key={option.value}
-                                className="flex items-center"
+                            <FormControl>
+                              <RadioGroup
+                                aria-labelledby="demo-radio-buttons-group-label"
+                                defaultValue="female"
+                                name="radio-buttons-group"
                               >
-                                <input
-                                  id={`filter-${section.id}-${optionIdx}`}
-                                  name={`${section.id}[]`}
-                                  defaultValue={option.value}
-                                  type="checkbox"
-                                  defaultChecked={option.checked}
-                                  className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                                />
-                                <label
-                                  htmlFor={`filter-${section.id}-${optionIdx}`}
-                                  className="ml-3 text-sm text-gray-600"
-                                >
-                                  {option.label}
-                                </label>
-                              </div>
-                            ))}
+                                {section.options.map((option, optionIdx) => (
+                                  <>
+                                    <FormControlLabel
+                                    onChange={(e) => handleSingleFilter(e, section.id)}
+                                      value={option.value}
+                                      control={<Radio />}
+                                      label={option.label}
+                                    />
+                                  </>
+                                ))}
+                              </RadioGroup>
+                            </FormControl>
                           </div>
                         </Disclosure.Panel>
                       </>
@@ -410,7 +472,9 @@ export default function Product() {
 
               <div className="sm:col-span-2 lg:col-span-3 w-full">
                 <div className="flex flex-wrap bg-white">
-                  {newArrivals.map((item) => <ProductCard product={item} />)}
+                  {newArrivals.map((item) => (
+                    <ProductCard product={item} />
+                  ))}
                 </div>
               </div>
             </div>
