@@ -10,35 +10,34 @@ export const HomePage = () => {
   return (
     <div>
       <TopCarousel />
-
       <div className="space-y-10 py-5 justify-center px-6">
         
         <HomeSectionCarousel
           data={newArrivals}
           sectionName={"New Arrivals"}
-          HomeSectionCard={NewArrivalsCard}
+          CardData={NewArrivalsCard}
         />
         <div><img src={banner.Banner3} alt="Men's Clothing Offer Banner"/></div>
         
         <HomeSectionCarousel
           data={newArrivals}
           sectionName={"Men's Latest Collection"}
-          HomeSectionCard={HomeSectionCard}
+          CardData={HomeSectionCard}
         />
         <HomeSectionCarousel
           data={newArrivals}
           sectionName={"Women's Latest Collection"}
-          HomeSectionCard={HomeSectionCard}
+          CardData={HomeSectionCard}
         />
         <HomeSectionCarousel
           data={newArrivals}
           sectionName={"Accessories"}
-          HomeSectionCard={HomeSectionCard}
+          CardData={HomeSectionCard}
         />
         <HomeSectionCarousel
           data={newArrivals}
           sectionName={"ShopStream Favorites"}
-          HomeSectionCard={HomeSectionCard}
+          CardData={HomeSectionCard}
         />
       </div>
     </div>
