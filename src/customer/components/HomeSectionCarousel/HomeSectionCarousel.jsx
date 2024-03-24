@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import AliceCarousel from "react-alice-carousel";
 import KeyboardArrowLeftIcon from "@mui/icons-material/NavigateBefore";
 
-export const HomeSectionCarousel = ({data, sectionName, HomeSectionCard}) => {
+export const HomeSectionCarousel = ({data, sectionName, CardData}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const items = data.slice(0, 10).map((item) => (
-    <HomeSectionCard product={item} />
+    <CardData product={item} />
   ));
 
   const responsive = {
