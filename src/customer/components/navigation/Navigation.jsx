@@ -192,23 +192,60 @@ export default function Navigation() {
                 </div>
 
                 <div className="space-y-6 border-t border-gray-200 px-4 py-6">
-                  <div className="flow-root">
-                    <a
-                      href="#"
-                      className="-m-2 block p-2 font-medium text-gray-900"
-                    >
-                      Sign in
-                    </a>
-                  </div>
-                  <div className="flow-root">
-                    <a
-                      href="#"
-                      className="-m-2 block p-2 font-medium text-gray-900"
-                    >
-                      Create account
-                    </a>
-                  </div>
+                {/* Avatar and logout login signup */}
+                {true ? (
+                    <div className="">
+                      <Avatar
+                        className="text-white"
+                        onClick={handleUserClick}
+                        aria-controls={open ? "basic-menu" : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={open ? "true" : undefined}
+                        sx={{
+                          bgcolor: deepPurple[500],
+                          color: "white",
+                          cursor: "pointer",
+                          width:32,
+                          height:32,
+                        }}
+                      >
+                        KT
+                      </Avatar>
+                      <Menu
+                        id="basic-menu"
+                        anchorEl={anchorEl}
+                        open={openUserMenu}
+                        onClose={handleCloseUserMenu}
+                        MenuListProps={{ "aria-labelledby": "basic-button" }}
+                      >
+                        <MenuItem onClick={handleCloseUserMenu}>
+                          Profile
+                        </MenuItem>
+
+                        <MenuItem>My Orders</MenuItem>
+
+                        <MenuItem>Logout</MenuItem>
+                      </Menu>
+                    </div>
+                  ) : (
+                    <div>
+                      <Button
+                        className="-m-2 block p-2 font-medium text-gray-900"
+                        onClick={handleOpen}
+                      >
+                        Sign in
+                      </Button>
+                      <span
+                        className="h-6 w-px bg-gray-200"
+                        aria-hidden="true"
+                      />
+                      <Button className="-m-2 block p-2 font-medium text-gray-900">
+                        Create account
+                      </Button>
+                    </div>
+                  )}
                 </div>
+                  
 
                 <div className="border-t border-gray-200 px-4 py-6">
                   <a href="#" className="-m-2 flex items-center p-2">
