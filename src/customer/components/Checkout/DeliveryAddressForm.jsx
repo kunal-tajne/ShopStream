@@ -1,8 +1,29 @@
 import { Box, Button, Grid, TextField } from "@mui/material";
 import React from "react";
 import AddressCard from "../AddressCard/AddressCard";
+import HorizontalLinearStepper from "./Checkout";
 
 const DeliveryAddressForm = () => {
+
+  const handleSubmission = (e) => {
+    e.preventDefault();
+   
+    const data = new FormData(e.currentTarget);
+    const address = {
+      firstName : data.get("firstName"),
+      lastName : data.get("lastName"),
+      streetAddress : data.get("address"),
+      city : data.get("city"),
+      state : data.get("state"),
+      zip : data.get("zip"),
+      phone : data.get("phoneNumber"),
+      alternatePhone : data.get("phoneNumberAlternate"),
+      referal : data.get("referalcode"),
+    }
+
+    console.log(address)
+  }
+
   return (
     <div>
       <Grid container spacing={4} className="px-20 py-10">
@@ -31,7 +52,7 @@ const DeliveryAddressForm = () => {
         </Grid>
         <Grid item xs={12} lg={9}>
           <Box className=" rounded-s-md ">
-            <form>
+            <form onSubmit={handleSubmission}>
               <Grid container spacing={3}>
                 <Grid item xs={12} lg={6}>
                   <TextField
@@ -41,6 +62,7 @@ const DeliveryAddressForm = () => {
                     label="First Name"
                     fullWidth
                     autoComplete="given-name"
+                    inputProps={{ pattern: "[A-Za-z ]*" }}
                   />
                 </Grid>
                 <Grid item xs={12} lg={6}>
@@ -51,6 +73,7 @@ const DeliveryAddressForm = () => {
                     label="Last Name"
                     fullWidth
                     autoComplete="given-name"
+                    inputProps={{ pattern: "[A-Za-z ]*" }}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -63,6 +86,7 @@ const DeliveryAddressForm = () => {
                     autoComplete="given-name"
                     multiline
                     rows={4}
+                    inputProps={{ pattern: "[A-Za-z ]*" }}
                   />
                 </Grid>
                 <Grid item xs={12} lg={6}>
@@ -73,6 +97,7 @@ const DeliveryAddressForm = () => {
                     label="City"
                     fullWidth
                     autoComplete="given-name"
+                    inputProps={{ pattern: "[A-Za-z ]*" }}
                   />
                 </Grid>
                 <Grid item xs={12} lg={6}>
@@ -83,6 +108,7 @@ const DeliveryAddressForm = () => {
                     label="State / Province / Region"
                     fullWidth
                     autoComplete="given-name"
+                    inputProps={{ pattern: "[A-Za-z ]*" }}
                   />
                 </Grid>
                 <Grid item xs={12} lg={6}>
@@ -93,6 +119,7 @@ const DeliveryAddressForm = () => {
                     label="Zip / Postal code"
                     fullWidth
                     autoComplete="shipping postal-code"
+                    type="number"
                   />
                 </Grid>
                 <Grid item xs={12} lg={6}>
@@ -102,7 +129,7 @@ const DeliveryAddressForm = () => {
                     name="phoneNumber"
                     label="Phone Number"
                     fullWidth
-                    autoComplete="tel"
+                    type="number"
                   />
                 </Grid>
                 <Grid item xs={12} lg={6}>
@@ -112,7 +139,7 @@ const DeliveryAddressForm = () => {
                     name="phoneNumberAlternate"
                     label="Alternate Phone Number"
                     fullWidth
-                    autoComplete="tel"
+                    type="number"
                   />
                 </Grid>
                 <Grid item xs={12} lg={6}>
