@@ -6,7 +6,7 @@ const navigation = {
         featured: [
           {
             name: "New Arrivals",
-            href: "#",
+            href: "/new-arrivals",
             imageSrc:
               "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg",
             imageAlt:
@@ -14,7 +14,7 @@ const navigation = {
           },
           {
             name: "Basic Tees",
-            href: "#",
+            href: "/basic-tees",
             imageSrc:
               "https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg",
             imageAlt:
@@ -26,38 +26,38 @@ const navigation = {
             id: "clothing",
             name: "Clothing",
             items: [
-              { name: "Tops", href: "#" },
-              { name: "Dresses", href: "#" },
-              { name: "Pants", href: "#" },
-              { name: "Denim", href: "#" },
-              { name: "Sweaters", href: "#" },
-              { name: "T-Shirts", href: "#" },
-              { name: "Jackets", href: "#" },
-              { name: "Activewear", href: "#" },
-              { name: "Browse All", href: "#" },
+              { name: "Tops",id:"top", href: "/tops" },
+              { name: "Dresses",id:"dresses", href: "/dresses" },
+              { name: "Pants",id:"pants", href: "/pants" },
+              { name: "Denim",id:"denim", href: "/denim" },
+              { name: "Sweaters",id:"sweaters", href: "/sweaters" },
+              { name: "T-Shirts",id:"t-shirts", href: "/t-shirts" },
+              { name: "Jackets",id:"jackets", href: "/jackets" },
+              { name: "Activewear",id:"activewear", href: "/activewear" },
+              { name: "Browse All",id:"browse-all", href: "/browse-all" },
             ],
           },
           {
             id: "accessories",
             name: "Accessories",
             items: [
-              { name: "Watches", href: "#" },
-              { name: "Wallets", href: "#" },
-              { name: "Bags", href: "#" },
-              { name: "Sunglasses", href: "#" },
-              { name: "Hats", href: "#" },
-              { name: "Belts", href: "#" },
+              { name: "Watches", id:"watches", href: "/watches"},
+              { name: "Wallets",id:"wallets", href: "/wallets"},
+              { name: "Bags", id:"bags", href: "/bags"},
+              { name: "Sunglasses", id:"sunglasses", href: "/sunglasses"},
+              { name: "Hats", id:"hats", href: "/hats"},
+              { name: "Belts", id:"belts", href: "/belts"},
             ],
           },
           {
             id: "brands",
             name: "Brands",
             items: [
-              { name: "Full Nelson", href: "#" },
-              { name: "My Way", href: "#" },
-              { name: "Re-Arranged", href: "#" },
-              { name: "Counterfeit", href: "#" },
-              { name: "Significant Other", href: "#" },
+              { name: "Gucci", id:"gucci", href: "/gucci"},
+              { name: "Lacausa", id:"lacausa", href: "/lacausa"},
+              { name: "Forever 21",id:"forever-21", href: "/forever-21"},
+              { name: "Mercer & Sons", id:"mercer-and-sons", href: "/mercer-and-sons"},
+              { name: "Harvest and Mill", id:"harvest-and-mill", href: "/harvest-and-mill"},
             ],
           },
         ],
@@ -88,7 +88,7 @@ const navigation = {
             id: "clothing",
             name: "Clothing",
             items: [
-              { name: "Tops", href: "#" },
+              { name: "Tops", href: "women/clothing/tops" },
               { name: "Pants", href: "#" },
               { name: "Sweaters", href: "#" },
               { name: "T-Shirts", href: "#" },

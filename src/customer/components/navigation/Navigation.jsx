@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
 import {
   Bars3Icon,
@@ -7,8 +7,9 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import navigation from "./navigationData";
-
-
+import { useNavigate } from "react-router-dom";
+import { Avatar, Button, Menu, MenuItem } from "@mui/material";
+import { deepPurple } from "@mui/material/colors";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -16,6 +17,33 @@ function classNames(...classes) {
 
 export default function Navigation() {
   const [open, setOpen] = useState(false);
+  const [openAuthModal, setOpenAuthModal] = useState(false);
+  const [anchorEl, setAnchorE1] = useState(null);
+  const openUserMenu = Boolean(anchorEl);
+  const jwt = localStorage.getItem("jwt");
+
+  const navigate = useNavigate();
+
+  const handleCategoryClick = (category, section, item) => {
+    navigate(`/${category.id}/${section.id}/${item.id}`);
+  };
+
+  const handleUserClick = (event) => {
+    setAnchorE1(event.currentTarget);
+    console.log("clicked")
+  };
+
+  const handleCloseUserMenu = (event) => {
+    setAnchorE1(null);
+  };
+
+  const handleOpen = () => {
+    setOpenAuthModal(true);
+  };
+
+  const handleClose = () => {
+    setOpenAuthModal(false);
+  };
 
   return (
     <div className="bg-white">
@@ -128,12 +156,18 @@ export default function Navigation() {
                             >
                               {section.items.map((item) => (
                                 <li key={item.name} className="flow-root">
-                                  <a
-                                    href={item.href}
-                                    className="-m-2 block p-2 text-gray-500"
+                                  <p
+                                    onClick={() =>
+                                      handleCategoryClick(
+                                        category,
+                                        section,
+                                        item
+                                      )
+                                    }
+                                    className="cursor-pointer hover:text-gray-800"
                                   >
                                     {item.name}
-                                  </a>
+                                  </p>
                                 </li>
                               ))}
                             </ul>
@@ -188,6 +222,7 @@ export default function Navigation() {
                     </span>
                     <span className="sr-only">, change currency</span>
                   </a>
+                  
                 </div>
               </Dialog.Panel>
             </Transition.Child>
@@ -196,11 +231,10 @@ export default function Navigation() {
       </Transition.Root>
 
       <header className="relative bg-white">
-        <p className="flex h-10 items-center justify-center bg-green-700 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
+        <p className="flex h-12 items-center justify-center bg-green-700 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
           Get free goodies on orders over $99
         </p>
-
-        <nav aria-label="Top" className="mx-5 px-4 sm:px-6 lg:px-8">
+        <nav aria-label="Top" className="sm:px-6 lg:pl-4 lg:pr-0">
           <div className="border-b border-gray-200">
             <div className="flex h-16 items-center px-11">
               <button
@@ -215,7 +249,7 @@ export default function Navigation() {
 
               {/* Logo */}
               <div className="flex flex-col sm:flex-row items-center">
-                <a href="#" className="flex items-center">
+                <a href="/" className="flex items-center">
                   <img
                     className="w-10 h-12.5 mr-2"
                     src="https://raw.githubusercontent.com/kunal-tajne/learningphase1/tightcoupling/src/logo.webp"
@@ -328,12 +362,18 @@ export default function Navigation() {
                                                 key={item.name}
                                                 className="flex"
                                               >
-                                                <a
-                                                  href={item.href}
-                                                  className="hover:text-gray-800"
+                                                <p
+                                                  onClick={() =>
+                                                    handleCategoryClick(
+                                                      category,
+                                                      section,
+                                                      item
+                                                    )
+                                                  }
+                                                  className="cursor-pointer hover:text-gray-800"
                                                 >
                                                   {item.name}
-                                                </a>
+                                                </p>
                                               </li>
                                             ))}
                                           </ul>
@@ -364,20 +404,7 @@ export default function Navigation() {
 
               <div className="ml-auto flex items-center">
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                  <a
-                    href="#"
-                    className="text-sm font-medium text-gray-700 hover:text-gray-800"
-                  >
-                    Sign in
-                  </a>
-                  <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
-                  <a
-                    href="#"
-                    className="text-sm font-medium text-gray-700 hover:text-gray-800"
-                  >
-                    Create account
-                  </a>
-                </div>
+                  
 
                 <div className="hidden lg:ml-8 lg:flex">
                   <a
@@ -390,13 +417,15 @@ export default function Navigation() {
                       className="block h-auto w-5 flex-shrink-0"
                     />
                     <span className="ml-3 block text-sm font-medium">USD</span>
-                    <span className="sr-only">, change currency</span>
                   </a>
                 </div>
 
                 {/* Search */}
                 <div className="flex lg:ml-6">
-                  <a href="#" className="p-2 text-gray-400 hover:text-gray-500">
+                  <a
+                    href="/search"
+                    className="p-2 text-gray-400 hover:text-gray-500"
+                  >
                     <span className="sr-only">Search</span>
                     <MagnifyingGlassIcon
                       className="h-6 w-6"
@@ -407,16 +436,69 @@ export default function Navigation() {
 
                 {/* Cart */}
                 <div className="ml-4 flow-root lg:ml-6">
-                  <a href="#" className="group -m-2 flex items-center p-2">
+                  <a href="/cart" className="group -m-2 flex items-center p-2">
                     <ShoppingBagIcon
                       className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
                       aria-hidden="true"
                     />
                     <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-                      0
+                      2
                     </span>
                     <span className="sr-only">items in cart, view bag</span>
                   </a>
+                </div>
+                {/* Avatar and logout login signup */}
+                {true ? (
+                    <div className="">
+                      <Avatar
+                        className="text-white"
+                        onClick={handleUserClick}
+                        aria-controls={open ? "basic-menu" : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={open ? "true" : undefined}
+                        sx={{
+                          bgcolor: deepPurple[500],
+                          color: "white",
+                          cursor: "pointer",
+                          width:32,
+                          height:32,
+                        }}
+                      >
+                        KT
+                      </Avatar>
+                      <Menu
+                        id="basic-menu"
+                        anchorEl={anchorEl}
+                        open={openUserMenu}
+                        onClose={handleCloseUserMenu}
+                        MenuListProps={{ "aria-labelledby": "basic-button" }}
+                      >
+                        <MenuItem onClick={handleCloseUserMenu}>
+                          Profile
+                        </MenuItem>
+
+                        <MenuItem>My Orders</MenuItem>
+
+                        <MenuItem>Logout</MenuItem>
+                      </Menu>
+                    </div>
+                  ) : (
+                    <div>
+                      <Button
+                        className="text-sm font-medium text-gray-700 hover:text-gray-800"
+                        onClick={handleOpen}
+                      >
+                        Sign in
+                      </Button>
+                      <span
+                        className="h-6 w-px bg-gray-200"
+                        aria-hidden="true"
+                      />
+                      <Button className="text-sm font-medium text-gray-700 hover:text-gray-800">
+                        Create account
+                      </Button>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
