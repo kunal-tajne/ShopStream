@@ -11,6 +11,7 @@ import DeliveryAddressForm from "./customer/components/Checkout/DeliveryAddressF
 import OrderSummary from "./customer/components/Checkout/OrderSummary";
 import Order from "./customer/components/Order/Order";
 import OrderCard from "./customer/components/Order/OrderCard";
+import OrderDetails from "./customer/components/Order/OrderDetails";
 
 function App() {
   return (
@@ -22,7 +23,8 @@ function App() {
         {/* <ProductDetails/> */}
         {/* <Cart/> */}
         {/* {<Checkout/>} */}
-        <Order/>
+        {/* <Order/> */}
+        <OrderDetails/>
       </div>
 
       <Footer></Footer>
