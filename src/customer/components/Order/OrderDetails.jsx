@@ -3,7 +3,6 @@ import AddressCard from "../AddressCard/AddressCard";
 import OrderTracker from "./OrderTracker";
 import { Box, Grid } from "@mui/material";
 import myImage from "../../../Data/newArrivalsData/NewArrival1.jpeg";
-import myImage2 from "../../../Data/newArrivalsData/NewArrival2.webp";
 import { deepPurple } from "@mui/material/colors";
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 
@@ -17,8 +16,8 @@ const OrderDetails = () => {
       <div className="py-10">
         <OrderTracker />
       </div>
-      <Grid container spacing={2}>
-        <Grid
+      <Grid container spacing={2} className="space-y-5">
+      {[1,1,1,1,1].map((item) => <Grid
           items
           container
           className="shadow-xl rounded-md p-5 border"
@@ -51,7 +50,8 @@ const OrderDetails = () => {
             <span>Rate & Review Product</span>
             </Box>
             </Grid>
-        </Grid>
+        </Grid>)}
+        
       </Grid>
     </div>
   );

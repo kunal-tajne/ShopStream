@@ -9,6 +9,7 @@ import ProductRatings from "./ProductRatings";
 import { newArrivals } from "../../../Data/newArrivals";
 import { NewArrivalsCard } from "../HomeSectionCard/NewArrivalsCard";
 import { HomeSectionCard } from "../HomeSectionCard/HomeSectionCard";
+import { useNavigate } from "react-router-dom";
 
 const product = {
   name: "Basic Tee 6-Pack",
@@ -68,6 +69,12 @@ function classNames(...classes) {
 export default function ProductDetails() {
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
   const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
+  const navigate = useNavigate();
+
+  const handleAddToCart = () =>
+  {
+    navigate(`/cart`)
+  }
 
   return (
     <div className="bg-white">
@@ -296,7 +303,7 @@ export default function ProductDetails() {
                   </RadioGroup>
                 </div>
 
-                <button className="mt-6 flex w-60 items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                <button onClick={handleAddToCart} className="mt-6 flex w-60 items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                   <ShoppingBagRoundedIcon className="mr-2" />
                   Add to bag
                 </button>
