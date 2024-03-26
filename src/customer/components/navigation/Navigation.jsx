@@ -30,7 +30,6 @@ export default function Navigation() {
 
   const handleUserClick = (event) => {
     setAnchorE1(event.currentTarget);
-    console.log("clicked")
   };
 
   const handleCloseUserMenu = (event) => {
@@ -222,7 +221,7 @@ export default function Navigation() {
                           Profile
                         </MenuItem>
 
-                        <MenuItem>My Orders</MenuItem>
+                        <MenuItem onClick={() => navigate("/account/order")}>My Orders</MenuItem>
 
                         <MenuItem>Logout</MenuItem>
                       </Menu>
@@ -499,6 +498,7 @@ export default function Navigation() {
                           cursor: "pointer",
                           width:32,
                           height:32,
+                          fontSize:18,
                         }}
                       >
                         KT
@@ -514,7 +514,7 @@ export default function Navigation() {
                           Profile
                         </MenuItem>
 
-                        <MenuItem>My Orders</MenuItem>
+                        <MenuItem onClick={() => navigate("/account/order")}>My Orders</MenuItem>
 
                         <MenuItem>Logout</MenuItem>
                       </Menu>
