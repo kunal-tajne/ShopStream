@@ -7,9 +7,13 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import navigation from "./navigationData";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Avatar, Button, Menu, MenuItem } from "@mui/material";
 import { deepPurple } from "@mui/material/colors";
+import AuthModal from "../Auth/AuthModal";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../../Redux/Auth/Action";
+import { color } from "../Product/FilterData";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -21,6 +25,10 @@ export default function Navigation() {
   const [anchorEl, setAnchorE1] = useState(null);
   const openUserMenu = Boolean(anchorEl);
   const jwt = localStorage.getItem("jwt");
+  const { auth,cart } = useSelector((store) => store);
+  const location = useLocation();
+  const dispatch = useDispatch();
+  
 
   const navigate = useNavigate();
 
@@ -37,12 +45,39 @@ export default function Navigation() {
   };
 
   const handleOpen = () => {
+    navigate("/login");
     setOpenAuthModal(true);
+    
+  };
+
+  const handleOpenRegister = () => {
+    navigate("/register");
+    setOpenAuthModal(true);
+    
   };
 
   const handleClose = () => {
     setOpenAuthModal(false);
   };
+
+  useEffect(() => {
+    if (auth.user){ 
+      handleClose();
+    }
+    if(location.pathname==="/login" || location.pathname==="/register"){
+      navigate(-1)
+    }
+  }, [auth.user]);
+
+  const handleLogout = () => {
+    handleCloseUserMenu();
+    dispatch(logout());
+  };
+  const handleMyOrderClick=()=>{
+    handleCloseUserMenu()
+    auth.user?.role==="ROLE_ADMIN"?navigate("/admin"):navigate("/account/order")
+    
+  }
 
   return (
     <div className="bg-white">
@@ -192,7 +227,7 @@ export default function Navigation() {
 
                 <div className="space-y-6 border-t border-gray-200 px-4 py-6">
                 {/* Avatar and logout login signup */}
-                {true ? (
+                {auth.user ? (
                     <div className="">
                       <Avatar
                         className="text-white"
@@ -208,7 +243,7 @@ export default function Navigation() {
                           height:32,
                         }}
                       >
-                        KT
+                        {auth.user?.firstName[0].toUpperCase()}
                       </Avatar>
                       <Menu
                         id="basic-menu"
@@ -223,7 +258,7 @@ export default function Navigation() {
 
                         <MenuItem onClick={() => navigate("/account/order")}>My Orders</MenuItem>
 
-                        <MenuItem>Logout</MenuItem>
+                        <MenuItem onClick={handleLogout}>Logout</MenuItem>
                       </Menu>
                     </div>
                   ) : (
@@ -232,13 +267,14 @@ export default function Navigation() {
                         className="-m-2 block p-2 font-medium text-gray-900"
                         onClick={handleOpen}
                       >
-                        Sign in
+                        Login
                       </Button>
                       <span
                         className="h-6 w-px bg-gray-200"
                         aria-hidden="true"
                       />
-                      <Button className="-m-2 block p-2 font-medium text-gray-900">
+                      <Button className="-m-2 block p-2 font-medium text-gray-900"
+                      onClick={handleOpenRegister}>
                         Create account
                       </Button>
                     </div>
@@ -484,7 +520,7 @@ export default function Navigation() {
                   </a>
                 </div>
                 {/* Avatar and logout login signup */}
-                {true ? (
+                {auth.user ? (
                     <div className="">
                       <Avatar
                         className="text-white"
@@ -501,7 +537,7 @@ export default function Navigation() {
                           fontSize:18,
                         }}
                       >
-                        KT
+                        {auth.user?.firstName[0].toUpperCase()}
                       </Avatar>
                       <Menu
                         id="basic-menu"
@@ -516,7 +552,7 @@ export default function Navigation() {
 
                         <MenuItem onClick={() => navigate("/account/order")}>My Orders</MenuItem>
 
-                        <MenuItem>Logout</MenuItem>
+                        <MenuItem onClick={handleLogout}>Logout</MenuItem>
                       </Menu>
                     </div>
                   ) : (
@@ -524,14 +560,16 @@ export default function Navigation() {
                       <Button
                         className="text-sm font-medium text-gray-700 hover:text-gray-800"
                         onClick={handleOpen}
+
+                        sx={{fontWeight: "semibold"}}
                       >
-                        Sign in
+                        Login
                       </Button>
                       <span
                         className="h-6 w-px bg-gray-200"
                         aria-hidden="true"
                       />
-                      <Button className="text-sm font-medium text-gray-700 hover:text-gray-800">
+                      <Button className="text-sm font-medium text-gray-700 hover:text-gray-800" onClick={handleOpenRegister} sx={{fontWeight: "semibold"}}>
                         Create account
                       </Button>
                     </div>
@@ -542,6 +580,8 @@ export default function Navigation() {
           </div>
         </nav>
       </header>
+
+      <AuthModal handleClose={handleClose} open={openAuthModal}/>
     </div>
   );
 }

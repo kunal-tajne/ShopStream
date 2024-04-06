@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Dialog, Disclosure, Menu, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import {
@@ -11,6 +11,7 @@ import {
 import { newArrivals } from "../../../Data/newArrivals";
 import ProductCard from "./ProductCard";
 import { color, filters, singleFilter } from "./FilterData";
+import { useDispatch, useSelector } from "react-redux";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import {
   FormControl,
@@ -19,7 +20,9 @@ import {
   Radio,
   RadioGroup,
 } from "@mui/material";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { findProducts } from "../../../Redux/Customers/Product/Action";
+
 
 const sortOptions = [
   { name: "Price: Low to High", href: "#", current: false },
@@ -34,6 +37,21 @@ export default function Product() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const location = useLocation()
   const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const param = useParams();
+
+  const decodedQueryString = decodeURIComponent(location.search);
+  const searchParams = new URLSearchParams(decodedQueryString);
+  const colorValue = searchParams.get("color");
+  const sizeValue = searchParams.get("size");
+  const price = searchParams.get("price");
+  const disccount = searchParams.get("disccout");
+  const sortValue = searchParams.get("sort");
+  const pageNumber = searchParams.get("page") || 1;
+  const stock = searchParams.get("stock");
+  const { customersProduct } = useSelector((store) => store);
+  const [isLoaderOpen, setIsLoaderOpen] = useState(false);
+
   
   const handleFilter = (value, sectionId) =>
   {
@@ -91,6 +109,40 @@ export default function Product() {
     navigate({search:`?${query}`}) 
   }
 
+  useEffect(() => {
+    const [minPrice, maxPrice] =
+      price === null ? [0, 0] : price.split("-").map(Number);
+    const data = {
+      category: param.levelThree,
+      colors: colorValue || [],
+      sizes: sizeValue || [],
+      minPrice: minPrice || 0,
+      maxPrice: maxPrice || 10000,
+      minDiscount: disccount || 0,
+      sort: sortValue || "price_low",
+      pageNumber: pageNumber - 1,
+      pageSize: 10,
+      stock: stock,
+    };
+    dispatch(findProducts(data));
+  }, [
+    param.levelThree,
+    colorValue,
+    sizeValue,
+    price,
+    disccount,
+    sortValue,
+    pageNumber,
+    stock,
+  ]);
+
+  useEffect(() => {
+    if (customersProduct.loading) {
+      setIsLoaderOpen(true);
+    } else {
+      setIsLoaderOpen(false);
+    }
+  }, [customersProduct.loading]);
 
   return (
     <div className="bg-white">
@@ -472,9 +524,9 @@ export default function Product() {
 
               <div className="sm:col-span-2 lg:col-span-3 w-full">
                 <div className="flex flex-wrap bg-white">
-                  {newArrivals.map((item) => (
-                    <ProductCard product={item} />
-                  ))}
+                {customersProduct?.products?.content?.map((item) => (
+                      <ProductCard product={item} />
+                    ))}
                 </div>
               </div>
             </div>

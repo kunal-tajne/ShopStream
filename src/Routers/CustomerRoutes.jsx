@@ -14,24 +14,34 @@ const CustomerRoutes = () => {
   return (
     <div>
       <div>
-      <Navigation/>
+        <Navigation />
       </div>
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
+        <Route path="/login" element={<HomePage />}></Route>
+        <Route path="/register" element={<HomePage />}></Route>
+
         <Route path="/cart" element={<Cart />}></Route>
-        <Route path="/:levelOne/:levelTwo/:levelThree" element={<Product />}></Route>
-        <Route path="/product/:productId/" element={<ProductDetails/>}></Route>
+        <Route
+          path="/:levelOne/:levelTwo/:levelThree"
+          element={<Product />}
+        ></Route>
+        <Route path="/product/:productId/" element={<ProductDetails />}></Route>
 
         {/* Horizontal Linear Stepper is name used for checkout function name didn't change it intially so used it to avoid any error into the file where it is used - kt */}
-        <Route path="/checkout" element={<HorizontalLinearStepper/>}></Route> 
+        <Route path="/checkout" element={<HorizontalLinearStepper />}></Route>
 
-        <Route path="/account/order" element={<Order/>}></Route> 
+        <Route path="/account/order" element={<Order />}></Route>
 
-        <Route path="/account/order/:orderId" element={<OrderDetails/>}></Route> 
-
+        <Route
+          path="/account/order/:orderId"
+          element={<OrderDetails />}
+        ></Route>
       </Routes>
 
-      <div><Footer/></div>
+      <div>
+        <Footer />
+      </div>
     </div>
   );
 };
