@@ -274,7 +274,7 @@ export default function Navigation() {
                         aria-hidden="true"
                       />
                       <Button className="-m-2 block p-2 font-medium text-gray-900"
-                      onClick={handleOpen}>
+                      onClick={handleOpenRegister}>
                         Create account
                       </Button>
                     </div>
