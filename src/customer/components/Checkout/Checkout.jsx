@@ -2,7 +2,7 @@ import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
 import ContactsIcon from "@mui/icons-material/Contacts";
 import CreditScoreIcon from "@mui/icons-material/CreditScore";
 import ReceiptIcon from "@mui/icons-material/Receipt";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Stepper from "@mui/material/Stepper";
@@ -22,17 +22,34 @@ const steps = [
 
 export default function HorizontalLinearStepper() {
   const [activeStep, setActiveStep] = React.useState(0);
+  const [skipped, setSkipped] = React.useState(new Set());
   const location = useLocation();
   const querySearch = new URLSearchParams(location.search);
   const step = querySearch.get("step");
+  const navigate=useNavigate();
+
 
   const handleNext = () => {
+    let newSkipped = skipped;
+   
+
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    setSkipped(newSkipped);
   };
 
   const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    navigate(`/checkout?step=${step-1}`)
   };
+
+
+
+  const handleReset = () => {
+    setActiveStep(0);
+  };
+
+  const handlePayment=()=>{
+    console.log("handle payment")
+  }
 
   return (
     <div>
@@ -92,7 +109,7 @@ export default function HorizontalLinearStepper() {
         )}
       </Box>
       <div>
-      {step == 2 && <DeliveryAddressForm />}
+      {step == 2 && <DeliveryAddressForm handleNext={handleNext} />}
       {step == 3 && <OrderSummary />}
       </div>
     </div>

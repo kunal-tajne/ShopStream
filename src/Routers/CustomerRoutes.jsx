@@ -9,6 +9,7 @@ import ProductDetails from "../customer/components/ProductDetails/ProductDetails
 import HorizontalLinearStepper from "../customer/components/Checkout/Checkout";
 import Order from "../customer/components/Order/Order";
 import OrderDetails from "../customer/components/Order/OrderDetails";
+import PaymentSuccess from "../customer/components/Payment/PaymentSuccess";
 
 const CustomerRoutes = () => {
   return (
@@ -36,6 +37,11 @@ const CustomerRoutes = () => {
         <Route
           path="/account/order/:orderId"
           element={<OrderDetails />}
+        ></Route>
+
+        <Route
+          path="/payment/:orderId"
+          element={<PaymentSuccess/>}
         ></Route>
       </Routes>
 

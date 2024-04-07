@@ -32,7 +32,7 @@ export const addItemToCart = (reqData) => async (dispatch) => {
       reqData.data,
       config,
     );
-console.log("add item to cart ",data)
+    console.log("add item to cart ",data)
     dispatch({
       type: ADD_ITEM_TO_CART_SUCCESS,
       payload: data,
