@@ -140,7 +140,7 @@ export const deleteProduct = (productId) => async (dispatch) => {
       payload: data,
     });
 
-    console.log("product delte ",data)
+    console.log("product deleted ",data)
   } catch (error) {
     console.log("catch error ",error)
     dispatch({

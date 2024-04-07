@@ -10,13 +10,14 @@ import {
 } from "@heroicons/react/20/solid";
 import { newArrivals } from "../../../Data/newArrivals";
 import ProductCard from "./ProductCard";
-import { color, filters, singleFilter } from "./FilterData";
+import {filters, singleFilter } from "./FilterData";
 import { useDispatch, useSelector } from "react-redux";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import {
   FormControl,
   FormControlLabel,
   FormLabel,
+  Pagination,
   Radio,
   RadioGroup,
 } from "@mui/material";
@@ -45,14 +46,20 @@ export default function Product() {
   const colorValue = searchParams.get("color");
   const sizeValue = searchParams.get("size");
   const price = searchParams.get("price");
-  const disccount = searchParams.get("disccout");
+  const discount = searchParams.get("discount");
   const sortValue = searchParams.get("sort");
   const pageNumber = searchParams.get("page") || 1;
   const stock = searchParams.get("stock");
   const { customersProduct } = useSelector((store) => store);
   const [isLoaderOpen, setIsLoaderOpen] = useState(false);
 
-  
+  const handlePaginationChange = (event, value) => {
+    const searchParams = new URLSearchParams(location.search);
+    searchParams.set("page", value);
+    const query = searchParams.toString();
+    navigate({ search: `?${query}` });
+  };
+
   const handleFilter = (value, sectionId) =>
   {
     //Gets the url of current page. For example https://example.com/search?category=electronics&&category=clothing&&category=books 
@@ -118,7 +125,7 @@ export default function Product() {
       sizes: sizeValue || [],
       minPrice: minPrice || 0,
       maxPrice: maxPrice || 10000,
-      minDiscount: disccount || 0,
+      minDiscount: discount || 0,
       sort: sortValue || "price_low",
       pageNumber: pageNumber - 1,
       pageSize: 10,
@@ -130,7 +137,7 @@ export default function Product() {
     colorValue,
     sizeValue,
     price,
-    disccount,
+    discount,
     sortValue,
     pageNumber,
     stock,
@@ -144,6 +151,7 @@ export default function Product() {
     }
   }, [customersProduct.loading]);
 
+  
   return (
     <div className="bg-white">
       <div>
@@ -531,6 +539,17 @@ export default function Product() {
               </div>
             </div>
           </section>
+            {/* pagination section */}
+        <section className="w-full px-[3.6rem]">
+          <div className="mx-auto px-4 py-5 flex justify-center shadow-lg border rounded-md">
+            <Pagination
+              count={customersProduct.products?.totalPages}
+              color="primary"
+              className=""
+              onChange={handlePaginationChange}
+            />
+          </div>
+        </section>
         </main>
       </div>
     </div>

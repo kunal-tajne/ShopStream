@@ -9,7 +9,12 @@ import ProductRatings from "./ProductRatings";
 import { newArrivals } from "../../../Data/newArrivals";
 import { NewArrivalsCard } from "../HomeSectionCard/NewArrivalsCard";
 import { HomeSectionCard } from "../HomeSectionCard/HomeSectionCard";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { findProductById } from "../../../Redux/Customers/Product/Action";
+import { addItemToCart } from "../../../Redux/Customers/Cart/Action";
+import { getAllReviews } from "../../../Redux/Customers/Review/Action";
 
 const product = {
   name: "Basic Tee 6-Pack",
@@ -70,11 +75,27 @@ export default function ProductDetails() {
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
   const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
   const navigate = useNavigate();
+  const { productId } = useParams();
+  const dispatch = useDispatch();
+  const jwt = localStorage.getItem("jwt");
+  const [activeImage, setActiveImage] = useState(null);
+  const { customersProduct } = useSelector((store) => store);
 
-  const handleAddToCart = () =>
-  {
-    navigate(`/cart`)
-  }
+
+
+  const handleAddToCart = () => {
+    const data = { productId, size: selectedSize.name };
+    console.log("Data____");
+    dispatch(addItemToCart({ data, jwt }));
+    navigate("/cart");
+  };
+
+
+  useEffect(() => {
+    const data = { productId: Number(productId), jwt };
+    dispatch(findProductById(data));
+    dispatch(getAllReviews(productId));
+  }, [productId]);
 
   return (
     <div className="bg-white">
@@ -122,7 +143,7 @@ export default function ProductDetails() {
           <div className="flex flex-col items-center">
             <div className="overflow-hidden rounded-lg max-2-[30rem] max-h-[35rem]">
               <img
-                src={product.images[0].src}
+                src={activeImage?.src || customersProduct.product?.imageUrl}
                 alt={product.images[0].alt}
                 className="h-full w-full object-cover object-center"
               />
@@ -144,10 +165,10 @@ export default function ProductDetails() {
           <div className="lg:col-span-1 maxt-auto max-w-2xl px-4 pb-16 sm:px-6 lg:max-w-2xl lg:px-8 lg:pb-24">
             <div className="lg:col-span-2">
               <h1 className="text-lg font-bold tracking-tight text-gray-900 lg:text-3xl sm:text-3xl">
-                Forever 21
+              {customersProduct.product?.brand}
               </h1>
               <h2 className="text-lg font-bold tracking-tight text-gray-900 lg:text-2xl sm:text-3xl opacity-85">
-                Sequin Denim Cami Mini Dress Knee length
+              {customersProduct.product?.title}
               </h2>
             </div>
 
@@ -156,11 +177,11 @@ export default function ProductDetails() {
               <h2 className="sr-only">Product information</h2>
 
               <div className="flex space-x-2 items-center text-lg lg:text-xl text-gray-900 mt-6">
-                <p className="text-2xl  text-gray-900">$50</p>
+                <p className="text-2xl  text-gray-900">${customersProduct.product?.discountedPrice}</p>
                 <p className="text-2xl line-through tracking-tight text-gray-900">
-                  $100
+                {customersProduct.product?.price}
                 </p>
-                <p className="text-green-600">50% off</p>
+                <p className="text-green-600">{customersProduct.product?.discountPercent}% Off</p>
               </div>
 
               {/* Reviews */}

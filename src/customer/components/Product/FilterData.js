@@ -31,22 +31,11 @@ export const color = [
     {value: "L", label: "L"},
     ],
     },
-    {
-        id: "category",
-        name: "Category",
-        options: [
-          { value: "new-arrivals", label: "New Arrivals", checked: true },
-          { value: "sale", label: "Sale", checked: false },
-          { value: "travel", label: "Travel", checked: false },
-          { value: "organization", label: "Organization", checked: false },
-          { value: "accessories", label: "Accessories", checked: false },
-        ],
-      },
       {
         id: "price",
         name: "Price",
         options: [
-        {value: "99-199", label: "$99 To $199"},
+        {value: "19-199", label: "$19 To $199"},
         {value: "199-299", label: "$199 To $299"},
         {value: "299-399", label: "$299 To $399"},
         {value: "499-999", label: "$499 To $999"},

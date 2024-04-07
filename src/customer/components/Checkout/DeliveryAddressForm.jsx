@@ -1,28 +1,56 @@
-import { Box, Button, Grid, TextField } from "@mui/material";
-import React from "react";
+import { Box, Button, Grid, TextField, Typography } from "@mui/material";
+import React, { useState } from "react";
 import AddressCard from "../AddressCard/AddressCard";
 import HorizontalLinearStepper from "./Checkout";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { createOrder } from "../../../Redux/Customers/Order/Action";
 
-const DeliveryAddressForm = () => {
 
+const DeliveryAddressForm = ({ handleNext }) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const jwt = localStorage.getItem("jwt");
+  const { auth } = useSelector((store) => store);
+  const [selectedAddress, setSelectedAdress] = useState(null);
+
+  const [formData, setFormData] = useState({
+    phoneNumber: "",
+    phoneNumberAlternate: "",
+    phoneNumberError: false, // State to track if there's an error
+    phoneNumberAlternateError: false,
+  });
+
+  
   const handleSubmission = (e) => {
     e.preventDefault();
-   
     const data = new FormData(e.currentTarget);
-    const address = {
-      firstName : data.get("firstName"),
-      lastName : data.get("lastName"),
-      streetAddress : data.get("address"),
-      city : data.get("city"),
-      state : data.get("state"),
-      zip : data.get("zip"),
-      phone : data.get("phoneNumber"),
-      alternatePhone : data.get("phoneNumberAlternate"),
-      referal : data.get("referalcode"),
-    }
 
-    console.log(address)
-  }
+    const address = {
+      firstName: data.get("firstName"),
+      lastName: data.get("lastName"),
+      streetAddress: data.get("address"),
+      city: data.get("city"),
+      state: data.get("state"),
+      zipCode: data.get("zip"),
+      phoneNumber: data.get("phoneNumber"),
+      alternatePhone: data.get("phoneNumberAlternate"),
+      referal: data.get("referalcode"),
+    };
+
+    dispatch(createOrder({ address, jwt, navigate }));
+    // after perfoming all the opration
+    handleNext();
+  };
+
+
+
+  const handleCreateOrder = (item) => {
+    dispatch(createOrder({ address: item, jwt, navigate }));
+    handleNext();
+  };
+
+ 
 
   return (
     <div>
@@ -33,22 +61,31 @@ const DeliveryAddressForm = () => {
           lg={3}
           className="border rounded-e-lg h-[30.5rem] overflow-y-scroll"
         >
-          <div className="p-3 py-2 border-b cursor-pointer">
-            <AddressCard />
-            <Button
-              sx={{
-                mt: 2,
-                fontWeight: "bold",
-                "&:hover": {
-                  bgcolor: "rgb(24,128,61)",
-                },
-              }}
-              size="large"
-              variant="contained"
+          {auth.user?.addresses.map((item) => (
+            <div
+              onClick={() => setSelectedAdress(item)}
+              className="p-3 py-2 border-b cursor-pointer"
             >
-              Deliver Here
-            </Button>
-          </div>
+              {" "}
+              <AddressCard address={item} />
+              {selectedAddress?.id === item.id && (
+                <Button
+                onClick={()=>handleCreateOrder(item)}
+                  sx={{
+                    mt: 2,
+                    fontWeight: "bold",
+                    "&:hover": {
+                      bgcolor: "rgb(24,128,61)",
+                    },
+                  }}
+                  size="large"
+                  variant="contained"
+                >
+                  Deliver Here
+                </Button>
+              )}
+            </div>
+          ))}
         </Grid>
         <Grid item xs={12} lg={9}>
           <Box className=" rounded-s-md ">
@@ -118,18 +155,21 @@ const DeliveryAddressForm = () => {
                     name="zip"
                     label="Zip / Postal code"
                     fullWidth
+                    type="text" 
                     autoComplete="shipping postal-code"
-                    type="number"
+                    inputProps={{ pattern: "[0-9]*" }}
                   />
                 </Grid>
                 <Grid item xs={12} lg={6}>
-                  <TextField
+                <TextField
                     required
                     id="phoneNumber"
                     name="phoneNumber"
                     label="Phone Number"
                     fullWidth
+                    inputProps={{ pattern: "[0-9]*" }}
                     type="number"
+                    
                   />
                 </Grid>
                 <Grid item xs={12} lg={6}>
@@ -144,7 +184,6 @@ const DeliveryAddressForm = () => {
                 </Grid>
                 <Grid item xs={12} lg={6}>
                   <TextField
-                    required
                     id="referalcode"
                     name="referalcode"
                     label="Referal Code"
@@ -155,8 +194,8 @@ const DeliveryAddressForm = () => {
                   <Button
                     sx={{
                       mt: 2,
-                      width:400,
-                      fontSize:16,
+                      width: 400,
+                      fontSize: 16,
                       fontWeight: "bold",
                       "&:hover": {
                         bgcolor: "rgb(24,128,61)",
