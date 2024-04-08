@@ -26,13 +26,9 @@ const navigation = {
             id: "clothing",
             name: "Clothing",
             items: [
-              { name: "Tops",id:"top", href: "/tops" },
               { name: "Dresses",id:"dresses", href: "/dresses" },
-              { name: "Pants",id:"pants", href: "/pants" },
               { name: "Denim",id:"denim", href: "/denim" },
-              { name: "Sweaters",id:"sweaters", href: "/sweaters" },
               { name: "T-Shirts",id:"t-shirts", href: "/t-shirts" },
-              { name: "Jackets",id:"jackets", href: "/jackets" },
               { name: "Activewear",id:"activewear", href: "/activewear" },
               { name: "Browse All",id:"browse-all", href: "/browse-all" },
             ],
