@@ -6,6 +6,9 @@ import {
   GET_ORDER_BY_ID_FAILURE,
   GET_ORDER_BY_ID_REQUEST,
   GET_ORDER_BY_ID_SUCCESS,
+  CREATE_ORDER_ADDRESS_FAILURE,
+  CREATE_ORDER_ADDRESS_REQUEST,
+  CREATE_ORDER_ADDRESS_SUCCESS,
   GET_ORDER_HISTORY_FAILURE,
   GET_ORDER_HISTORY_REQUEST,
   GET_ORDER_HISTORY_SUCCESS,
@@ -100,4 +103,46 @@ export const getOrderHistory = (reqData) => async (dispatch, getState) => {
           : error.message,
     });
   }
+
+
+
 };
+
+// export const createOrderWithExistingAddress = (reqData) => async (dispatch) => {
+//   console.log("req data ", reqData);
+//   const id = reqData.address.id;
+//   console.log("req data ", id);
+//   try {
+//     dispatch({ type: CREATE_ORDER_ADDRESS_REQUEST });
+
+//     const config = {
+//       headers: {
+//         "Content-Type": "application/json",
+//         Authorization: `Bearer ${reqData.jwt}`,
+//       },
+//     };
+
+//     const { data } = await axios.post(
+//       `${API_BASE_URL}/api/orders/`,
+//       reqData.address,
+//       config
+//     );
+//     if (data.id) {
+//       reqData.navigate({ search: `step=3&order_id=${data.id}` });
+//     }
+//     console.log("created Address Order - ", data);
+//     dispatch({
+//       type: CREATE_ORDER_ADDRESS_SUCCESS,
+//       payload: data,
+//     });
+//   } catch (error) {
+//     console.log("catch error Address Order : ", error);
+//     dispatch({
+//       type: CREATE_ORDER_ADDRESS_FAILURE,
+//       payload:
+//         error.response && error.response.data.message
+//           ? error.response.data.message
+//           : error.message,
+//     });
+//   }
+// };
