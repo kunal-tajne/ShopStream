@@ -24,7 +24,7 @@ const PaymentSuccess = () => {
   const { order } = useSelector((store) => store);
 
   useEffect(() => {
-    console.log("orderId",orderId)
+    console.log("orderId",order)
     const urlParams = new URLSearchParams(window.location.search);
     setPaymentId(urlParams.get("razorpay_payment_id"));
     setReferenceId(urlParams.get("razorpay_payment_link_reference_id"));
@@ -40,7 +40,7 @@ const PaymentSuccess = () => {
   }, [orderId, paymentId]);
 
   return (
-    <div className="px-2 lg:px-36">
+    <div className="px-2 lg:px-36 mt-10">
       <div className="flex flex-col justify-center items-center">
         <Alert
           variant="filled"
@@ -73,7 +73,7 @@ const PaymentSuccess = () => {
                 <div className="ml-5 space-y-2">
                   <p className="">{item.product.title}</p>
                   <p className="opacity-50 text-xs font-semibold space-x-5">
-                    <span>Color: pink</span> <span>Size: {item.size}</span>
+                    <span>Color: {item.color}</span> <span>Size: {item.size}</span>
                   </p>
                   <p>Seller: {item.product.brand}</p>
                   <p>${item.price}</p>

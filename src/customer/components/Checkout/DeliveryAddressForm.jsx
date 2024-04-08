@@ -4,7 +4,7 @@ import AddressCard from "../AddressCard/AddressCard";
 import HorizontalLinearStepper from "./Checkout";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { createOrder } from "../../../Redux/Customers/Order/Action";
+import { createOrder, createOrderWithExistingAddress } from "../../../Redux/Customers/Order/Action";
 
 
 const DeliveryAddressForm = ({ handleNext }) => {
@@ -13,15 +13,7 @@ const DeliveryAddressForm = ({ handleNext }) => {
   const jwt = localStorage.getItem("jwt");
   const { auth } = useSelector((store) => store);
   const [selectedAddress, setSelectedAdress] = useState(null);
-
-  const [formData, setFormData] = useState({
-    phoneNumber: "",
-    phoneNumberAlternate: "",
-    phoneNumberError: false, // State to track if there's an error
-    phoneNumberAlternateError: false,
-  });
-
-  
+ 
   const handleSubmission = (e) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
@@ -49,6 +41,13 @@ const DeliveryAddressForm = ({ handleNext }) => {
     dispatch(createOrder({ address: item, jwt, navigate }));
     handleNext();
   };
+
+
+  // const handleCreateOrderWithExistingAddress = (item) => {
+  //   dispatch(createOrderWithExistingAddress({ address: item, jwt, navigate }));
+  //   handleNext();
+  // };
+
 
  
 
@@ -174,7 +173,6 @@ const DeliveryAddressForm = ({ handleNext }) => {
                 </Grid>
                 <Grid item xs={12} lg={6}>
                   <TextField
-                    required
                     id="phoneNumberAlternate"
                     name="phoneNumberAlternate"
                     label="Alternate Phone Number"
