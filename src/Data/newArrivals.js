@@ -8,6 +8,7 @@ const images = importAll(imagesContext);
 export const newArrivals=[
     {
         "imageUrl": images[0],
+        "productLink":"https://shopstream-by-kunaltajne.vercel.app/product/1",
         "brand": "Forever 21",
         "title": "Sequin Denim Cami Mini Dress Knee length",
         "color": "Starlight Blue",
@@ -36,6 +37,7 @@ export const newArrivals=[
     },
     {
         "imageUrl": images[1],
+        "productLink":"https://shopstream-by-kunaltajne.vercel.app/product/1",
         "brand": "Mercer and Sons",
         "title": "Mineral Wash Lounge Outfit Round Neck",
         "color": "Yellow",
@@ -64,6 +66,7 @@ export const newArrivals=[
     },
     {
         "imageUrl": images[2],
+        "productLink":"https://shopstream-by-kunaltajne.vercel.app/product/1",
         "brand": "Lacausa",
         "title": "Plus Size Metallic Jacquard Maxi Dress",
         "color": "TURQUOISE/MULTI",
@@ -92,6 +95,7 @@ export const newArrivals=[
     },
     {
         "imageUrl": images[3],
+        "productLink":"https://shopstream-by-kunaltajne.vercel.app/product/1",
         "brand": "GUCCI",
         "title": "GG Flocked Print Cotton Polo Top",
         "color": "White",
@@ -120,6 +124,7 @@ export const newArrivals=[
     },
     {
         "imageUrl": images[4],
+        "productLink":"https://shopstream-by-kunaltajne.vercel.app/product/1",
         "brand": "Harvest and Mill",
         "title": "Double-Breasted Peak Lapel Blazer",
         "color": "Grey",
@@ -148,6 +153,7 @@ export const newArrivals=[
     },
     {
         "imageUrl": images[5],
+        "productLink":"https://shopstream-by-kunaltajne.vercel.app/product/1",
         "brand": "Esby",
         "title": "Denim Raglan-Sleeve Bomber Jacket",
         "color": "Pink",
@@ -176,6 +182,7 @@ export const newArrivals=[
     },
     {
         "imageUrl": images[6],
+        "productLink":"https://shopstream-by-kunaltajne.vercel.app/product/1",
         "brand": "Mission Workshop",
         "title": "Distressed Denim Trucker Jacket",
         "color": "Medium Denim",
@@ -204,6 +211,7 @@ export const newArrivals=[
     },
     {
         "imageUrl": images[7],
+        "productLink":"https://shopstream-by-kunaltajne.vercel.app/product/1",
         "brand": "Rogue Territory",
         "title": "Long-Sleeve Cargo Shacket Exclusive",
         "color": "Blue",
@@ -232,6 +240,7 @@ export const newArrivals=[
     },
     {
         "imageUrl": images[8],
+        "productLink":"https://shopstream-by-kunaltajne.vercel.app/product/1",
         "brand": "Schott NYC",
         "title": "Geo Print Zip-Up Polo Shirt Loose Fit",
         "color": "Black/Deep Taupe",

@@ -26,13 +26,9 @@ const navigation = {
             id: "clothing",
             name: "Clothing",
             items: [
-              { name: "Tops",id:"top", href: "/tops" },
               { name: "Dresses",id:"dresses", href: "/dresses" },
-              { name: "Pants",id:"pants", href: "/pants" },
               { name: "Denim",id:"denim", href: "/denim" },
-              { name: "Sweaters",id:"sweaters", href: "/sweaters" },
               { name: "T-Shirts",id:"t-shirts", href: "/t-shirts" },
-              { name: "Jackets",id:"jackets", href: "/jackets" },
               { name: "Activewear",id:"activewear", href: "/activewear" },
               { name: "Browse All",id:"browse-all", href: "/browse-all" },
             ],
@@ -42,7 +38,6 @@ const navigation = {
             name: "Accessories",
             items: [
               { name: "Watches", id:"watches", href: "/watches"},
-              { name: "Wallets",id:"wallets", href: "/wallets"},
               { name: "Bags", id:"bags", href: "/bags"},
               { name: "Sunglasses", id:"sunglasses", href: "/sunglasses"},
               { name: "Hats", id:"hats", href: "/hats"},
@@ -88,25 +83,21 @@ const navigation = {
             id: "clothing",
             name: "Clothing",
             items: [
-              { name: "Tops", href: "women/clothing/tops" },
-              { name: "Pants", href: "#" },
-              { name: "Sweaters", href: "#" },
-              { name: "T-Shirts", href: "#" },
-              { name: "Jackets", href: "#" },
-              { name: "Activewear", href: "#" },
-              { name: "Browse All", href: "#" },
+              { name: "Pants", id:"pants", href: "/pants"},
+              { name: "Sweaters", id:"sweaters", href: "/sweaters"},
+              { name: "T-Shirts", id:"tshirts", href: "/tShirts"},
+              { name: "Jackets", id:"jackets", href: "/jackets"},
+              { name: "Activewear", id:"activewear", href: "/activewear"},
+              { name: "Browse All", id:"browse-all", href: "/browse-all"},
             ],
           },
           {
             id: "accessories",
             name: "Accessories",
             items: [
-              { name: "Watches", href: "#" },
-              { name: "Wallets", href: "#" },
-              { name: "Bags", href: "#" },
-              { name: "Sunglasses", href: "#" },
-              { name: "Hats", href: "#" },
-              { name: "Belts", href: "#" },
+              { name: "Watches", id:"watches", href: "/watches"},
+              { name: "Sunglasses", id:"sunglasses", href: "/sunglasses"},
+              { name: "Belts", id:"belts", href: "/belts"},
             ],
           },
           {
@@ -123,8 +114,8 @@ const navigation = {
       },
     ],
     pages: [
-      { name: "Company", href: "#" },
-      { name: "Stores", href: "#" },
+      { name: "About Us", href: "/about-us" },
+      { name: "Contact", href: "/contact" },
     ],
   };
 

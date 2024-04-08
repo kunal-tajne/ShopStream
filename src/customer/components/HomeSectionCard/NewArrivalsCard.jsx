@@ -1,7 +1,13 @@
 import React from "react";
 
 export const NewArrivalsCard = ({product}) => {
+
+  const handleClick = () => {
+    window.location.href = product.productLink;
+  };
+
   return (
+    <a href={product.productLink} onClick={handleClick} className="cursor-pointer">
     <div className="cursor-pointer flex flex-col items-center bg-white rounded-lg shadow-lg overflow-hidden w-[15rem] mx-3 border">
       <div className="h-[20rem] w-[15rem]">
         <img
@@ -20,5 +26,6 @@ export const NewArrivalsCard = ({product}) => {
         </p>
       </div>
     </div>
+    </a>
   );
 };

@@ -10,6 +10,8 @@ import HorizontalLinearStepper from "../customer/components/Checkout/Checkout";
 import Order from "../customer/components/Order/Order";
 import OrderDetails from "../customer/components/Order/OrderDetails";
 import PaymentSuccess from "../customer/components/Payment/PaymentSuccess";
+import AboutUs from "../customer/pages/AboutUs";
+import Contact from "../customer/pages/Contact";
 
 const CustomerRoutes = () => {
   return (
@@ -39,10 +41,11 @@ const CustomerRoutes = () => {
           element={<OrderDetails />}
         ></Route>
 
-        <Route
-          path="/payment/:orderId"
-          element={<PaymentSuccess/>}
-        ></Route>
+        <Route path="/payment/:orderId" element={<PaymentSuccess />}></Route>
+
+        <Route path="/about-us" element={<AboutUs />}></Route>
+
+        <Route path="/contact" element={<Contact />}></Route>
       </Routes>
 
       <div>
