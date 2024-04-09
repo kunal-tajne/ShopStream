@@ -2,7 +2,7 @@ import axios from 'axios';
 const LOCALHOST='http://localhost:5454'
 const DEPLOYMENTURL='https://shopstreambackend-production.up.railway.app'
 
-export const API_BASE_URL = LOCALHOST
+export const API_BASE_URL = DEPLOYMENTURL
 
 const api = axios.create({
   baseURL: API_BASE_URL,

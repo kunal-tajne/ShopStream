@@ -7,7 +7,7 @@ const images = importAll(imagesContext);
 
 export const newArrivals=[
     {
-        "imageUrl": images[0],
+        "imageUrl": "https://raw.githubusercontent.com/kunal-tajne/ShopStream/main/src/Data/newArrivalsData/NewArrival1.jpeg",
         "productLink":"https://shopstream-by-kunaltajne.vercel.app/product/1",
         "brand": "Forever 21",
         "title": "Sequin Denim Cami Mini Dress Knee length",
@@ -36,7 +36,7 @@ export const newArrivals=[
           "description":"Crafted from non-stretch denim, this cami dress features allover sequin embellishments, a straight-cut neckline and back, adjustable straps, exposed zippered back closure, mini length, and A-line silhouette."
     },
     {
-        "imageUrl": images[1],
+        "imageUrl": "https://raw.githubusercontent.com/kunal-tajne/ShopStream/main/src/Data/newArrivalsData/NewArrival2.webp",
         "productLink":"https://shopstream-by-kunaltajne.vercel.app/product/1",
         "brand": "Mercer and Sons",
         "title": "Mineral Wash Lounge Outfit Round Neck",
@@ -61,11 +61,11 @@ export const newArrivals=[
           "quantity": 100,
           "topLevelCategory": "Men",
           "secondLevelCategory": "Clothing",
-          "thirdLevelCategory": "mens_casual",
+          "thirdLevelCategory": "t-shirt",
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     },
     {
-        "imageUrl": images[2],
+        "imageUrl": "https://raw.githubusercontent.com/kunal-tajne/ShopStream/main/src/Data/newArrivalsData/NewArrival3.webp",
         "productLink":"https://shopstream-by-kunaltajne.vercel.app/product/1",
         "brand": "Lacausa",
         "title": "Plus Size Metallic Jacquard Maxi Dress",
@@ -94,7 +94,7 @@ export const newArrivals=[
           "description":"A jacquard maxi dress featuring an allover metallic burnout pattern, round neckline, open back, adjustable cami straps that form a crisscross back design, and column silhouette."
     },
     {
-        "imageUrl": images[3],
+        "imageUrl": "https://raw.githubusercontent.com/kunal-tajne/ShopStream/main/src/Data/newArrivalsData/NewArrival4.png",
         "productLink":"https://shopstream-by-kunaltajne.vercel.app/product/1",
         "brand": "GUCCI",
         "title": "GG Flocked Print Cotton Polo Top",
@@ -123,7 +123,7 @@ export const newArrivals=[
           "description":"The men's Cruise 2024 collection presents a contemporary silhouette. Made from a cotton jersey with an allover GG flocked print, this relaxed polo top brings a contemporary touch to the everyday."
     },
     {
-        "imageUrl": images[4],
+        "imageUrl": "https://raw.githubusercontent.com/kunal-tajne/ShopStream/main/src/Data/newArrivalsData/NewArrival5.jpeg",
         "productLink":"https://shopstream-by-kunaltajne.vercel.app/product/1",
         "brand": "Harvest and Mill",
         "title": "Double-Breasted Peak Lapel Blazer",
@@ -152,7 +152,7 @@ export const newArrivals=[
           "description":"A crepe blazer featuring peak lapels, a double-breasted construction, front welt pockets, long sleeves, and back split hem."
     },
     {
-        "imageUrl": images[5],
+        "imageUrl": "https://raw.githubusercontent.com/kunal-tajne/ShopStream/main/src/Data/newArrivalsData/NewArrival6.webp",
         "productLink":"https://shopstream-by-kunaltajne.vercel.app/product/1",
         "brand": "Esby",
         "title": "Denim Raglan-Sleeve Bomber Jacket",
@@ -181,7 +181,7 @@ export const newArrivals=[
           "description":"Crafted from non-stretch denim, this bomber jacket features a flat collar, zip-up front closure, raglan long sleeves, slanted front pockets, ribbed trim, and semi-cropped hem."
     },
     {
-        "imageUrl": images[6],
+        "imageUrl": "https://raw.githubusercontent.com/kunal-tajne/ShopStream/main/src/Data/newArrivalsData/NewArrival7.jpeg",
         "productLink":"https://shopstream-by-kunaltajne.vercel.app/product/1",
         "brand": "Mission Workshop",
         "title": "Distressed Denim Trucker Jacket",
@@ -210,7 +210,7 @@ export const newArrivals=[
           "description":"Crafted from non-stretch denim, this trucker jacket features distressing, seam detailing, a basic collar, button-front closures, buttoned chest flap pockets, and long sleeves with buttoned cuffs."
     },
     {
-        "imageUrl": images[7],
+        "imageUrl": "https://raw.githubusercontent.com/kunal-tajne/ShopStream/main/src/Data/newArrivalsData/NewArrival8.webp",
         "productLink":"https://shopstream-by-kunaltajne.vercel.app/product/1",
         "brand": "Rogue Territory",
         "title": "Long-Sleeve Cargo Shacket Exclusive",
@@ -239,7 +239,7 @@ export const newArrivals=[
           "description":"A woven shacket featuring a basic collar, button-front closures, buttoned front cargo flap pockets, and long sleeves with buttoned cuffs."
     },
     {
-        "imageUrl": images[8],
+        "imageUrl": "https://raw.githubusercontent.com/kunal-tajne/ShopStream/main/src/Data/newArrivalsData/NewArrival9.jpeg",
         "productLink":"https://shopstream-by-kunaltajne.vercel.app/product/1",
         "brand": "Schott NYC",
         "title": "Geo Print Zip-Up Polo Shirt Loose Fit",
