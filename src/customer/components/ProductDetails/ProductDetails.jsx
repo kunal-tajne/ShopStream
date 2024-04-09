@@ -17,24 +17,24 @@ import { addItemToCart } from "../../../Redux/Customers/Cart/Action";
 import { getAllReviews } from "../../../Redux/Customers/Review/Action";
 
 const product = {
-  name: "Basic Tee 6-Pack",
+  name: "Dress",
   price: "$192",
-  href: "#",
+  href: "/",
   breadcrumbs: [
-    { id: 1, name: "Men", href: "#" },
+    { id: 1, name: "Women", href: "#" },
     { id: 2, name: "Clothing", href: "#" },
   ],
   images: [
     {
-      src: "https://tailwindui.com/img/ecommerce-images/product-page-02-secondary-product-shot.jpg",
+      src: "https://www.forever21.com/dw/image/v2/BFKH_PRD/on/demandware.static/-/Sites-f21-master-catalog/default/dw3e7db897/3_back_750/01262181-01.jpg?sw=200&sh=300",
       alt: "Two each of gray, white, and black shirts laying flat.",
     },
     {
-      src: "https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-01.jpg",
+      src: "https://www.forever21.com/dw/image/v2/BFKH_PRD/on/demandware.static/-/Sites-f21-master-catalog/default/dw08449366/5_detail_750/01262181-01.jpg?sw=200&sh=300",
       alt: "Model wearing plain black basic tee.",
     },
     {
-      src: "https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-02.jpg",
+      src: "https://www.forever21.com/dw/image/v2/BFKH_PRD/on/demandware.static/-/Sites-f21-master-catalog/default/dw424e34b5/2_side_750/01262181-01.jpg?sw=200&sh=300",
       alt: "Model wearing plain gray basic tee.",
     },
     {
@@ -54,8 +54,6 @@ const product = {
     { name: "L", inStock: true },
     { name: "XL", inStock: true },
   ],
-  description:
-    'The Basic Tee 6-Pack allows you to fully express your vibrant personality with three grayscale options. Feeling adventurous? Put on a heather gray tee. Want to be a trendsetter? Try our exclusive colorway: "Black". Need to add an extra pop of color to your outfit? Our white tee has you covered.',
   highlights: [
     "Hand cut and sewn locally",
     "Dyed with our proprietary colors",
@@ -63,9 +61,8 @@ const product = {
     "Ultra-soft 100% cotton",
   ],
   details:
-    'The 6-Pack includes two black, two white, and two heather gray Basic Tees. Sign up for our subscription service and be the first to get new, exciting colors, like our upcoming "Charcoal Gray" limited release.',
+    "Content + Care : Shell 1: 44% polyester, 37% cotton, 12% rayon, 5% nylon, 2% other fibers. Shell 2: 64% polyester, 27% cotton, 5% nylon, 4% other fibers Lining: 100% polyester Hand wash cold",
 };
-const reviews = { href: "#", average: 4, totalCount: 117 };
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -81,15 +78,11 @@ export default function ProductDetails() {
   const [activeImage, setActiveImage] = useState(null);
   const { customersProduct } = useSelector((store) => store);
 
-
-
   const handleAddToCart = () => {
     const data = { productId, size: selectedSize.name };
-    console.log("Data____");
     dispatch(addItemToCart({ data, jwt }));
     navigate("/cart");
   };
-
 
   useEffect(() => {
     const data = { productId: Number(productId), jwt };
@@ -105,15 +98,22 @@ export default function ProductDetails() {
             role="list"
             className="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8"
           >
-            {product.breadcrumbs.map((breadcrumb) => (
-              <li key={breadcrumb.id}>
+            <div className="flex items-center">
+              <li className="text-sm">
+              <a
+                href={product.href}
+                aria-current="page"
+                className="font-medium text-gray-500 hover:text-gray-600"
+              >
+                {customersProduct.product?.category?.parentCategory?.parentCategory?.name}
+              </a>
+            </li>
+              <li>
                 <div className="flex items-center">
                   <a
-                    href={breadcrumb.href}
+                    href={"/"}
                     className="mr-2 text-sm font-medium text-gray-900"
-                  >
-                    {breadcrumb.name}
-                  </a>
+                  ></a>
                   <svg
                     width={16}
                     height={20}
@@ -126,16 +126,45 @@ export default function ProductDetails() {
                   </svg>
                 </div>
               </li>
-            ))}
-            <li className="text-sm">
+              <li className="text-sm">
               <a
                 href={product.href}
                 aria-current="page"
                 className="font-medium text-gray-500 hover:text-gray-600"
               >
-                {product.name}
+                {customersProduct.product?.category?.parentCategory?.name}
               </a>
             </li>
+              <li>
+                <div className="flex items-center">
+                  <a
+                    href={"/"}
+                    className="mr-2 text-sm font-medium text-gray-900"
+                  ></a>
+                  <svg
+                    width={16}
+                    height={20}
+                    viewBox="0 0 16 20"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    className="h-5 w-4 text-gray-300"
+                  >
+                    <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
+                  </svg>
+                </div>
+              </li>
+              <li className="text-sm">
+              <a
+                href={product.href}
+                aria-current="page"
+                className="font-medium text-gray-500 hover:text-gray-600 uppercase"
+              >
+                {customersProduct.product?.category?.name}
+              </a>
+            </li>
+            </div>
+
+           
           </ol>
         </nav>
         <section className="grid lg:grid-cols-2 gap-x-8 gap-y-10 px-4 pt-10">
@@ -165,10 +194,10 @@ export default function ProductDetails() {
           <div className="lg:col-span-1 maxt-auto max-w-2xl px-4 pb-16 sm:px-6 lg:max-w-2xl lg:px-8 lg:pb-24">
             <div className="lg:col-span-2">
               <h1 className="text-lg font-bold tracking-tight text-gray-900 lg:text-3xl sm:text-3xl">
-              {customersProduct.product?.brand}
+                {customersProduct.product?.brand}
               </h1>
               <h2 className="text-lg font-bold tracking-tight text-gray-900 lg:text-2xl sm:text-3xl opacity-85">
-              {customersProduct.product?.title}
+                {customersProduct.product?.title}
               </h2>
             </div>
 
@@ -177,11 +206,15 @@ export default function ProductDetails() {
               <h2 className="sr-only">Product information</h2>
 
               <div className="flex space-x-2 items-center text-lg lg:text-xl text-gray-900 mt-6">
-                <p className="text-2xl  text-gray-900">${customersProduct.product?.discountedPrice}</p>
-                <p className="text-2xl line-through tracking-tight text-gray-900">
-                {customersProduct.product?.price}
+                <p className="text-2xl  text-gray-900">
+                  ${customersProduct.product?.discountedPrice}
                 </p>
-                <p className="text-green-600">{customersProduct.product?.discountPercent}% Off</p>
+                <p className="text-2xl line-through tracking-tight text-gray-900">
+                  {customersProduct.product?.price}
+                </p>
+                <p className="text-green-600">
+                  {customersProduct.product?.discountPercent}% Off
+                </p>
               </div>
 
               {/* Reviews */}
@@ -240,6 +273,7 @@ export default function ProductDetails() {
                         </RadioGroup.Option>
                       ))}
                     </div>
+                    
                   </RadioGroup>
                 </div>
 
@@ -324,7 +358,10 @@ export default function ProductDetails() {
                   </RadioGroup>
                 </div>
 
-                <button onClick={handleAddToCart} className="mt-6 flex w-60 items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                <button
+                  onClick={handleAddToCart}
+                  className="mt-6 flex w-60 items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                >
                   <ShoppingBagRoundedIcon className="mr-2" />
                   Add to bag
                 </button>
@@ -338,7 +375,7 @@ export default function ProductDetails() {
 
                 <div className="space-y-6">
                   <p className="text-base text-gray-900">
-                    {product.description}
+                  {customersProduct.product?.description}
                   </p>
                 </div>
               </div>
@@ -379,7 +416,7 @@ export default function ProductDetails() {
           <div className="border p-5">
             <Grid container spacing={7}>
               <Grid item xs={6}>
-              <h1 className="text-xl font-semibold pb-1 text-center">
+                <h1 className="text-xl font-semibold pb-1 text-center">
                   Product Reviews
                 </h1>
                 {ProducReviewData.map((currReview) => (
@@ -395,11 +432,27 @@ export default function ProductDetails() {
                   <Rating value={4.6} precision={0.5} read-only />
                   <p className=" opacity-80">5980 Ratings</p>
                 </div>
-                <ProductRatings rating={"Excellent"} value={80} color={"success"} />
-                <ProductRatings rating={"Very Good"} value={60} color={"success"}/>
-                <ProductRatings rating={"Good"} value={70} color={"secondary"}/>
-                <ProductRatings rating={"Average"} value={40} color={"warning"}/>
-                <ProductRatings rating={"Poor"} value={20} color={"error"}/>
+                <ProductRatings
+                  rating={"Excellent"}
+                  value={80}
+                  color={"success"}
+                />
+                <ProductRatings
+                  rating={"Very Good"}
+                  value={60}
+                  color={"success"}
+                />
+                <ProductRatings
+                  rating={"Good"}
+                  value={70}
+                  color={"secondary"}
+                />
+                <ProductRatings
+                  rating={"Average"}
+                  value={40}
+                  color={"warning"}
+                />
+                <ProductRatings rating={"Poor"} value={20} color={"error"} />
               </Grid>
             </Grid>
           </div>
@@ -408,12 +461,13 @@ export default function ProductDetails() {
         {/*Similar Products*/}
 
         <section className="p-2">
-        <h1 className="py-5 text-xl font-bold">Similar Products</h1>
-        <div className="flex flex-wrap p-5 space-y-5 cursor-pointer">
-          {newArrivals.map((item) => <NewArrivalsCard product={item}/>)}
-        </div>
+          <h1 className="py-5 text-xl font-bold">Similar Products</h1>
+          <div className="flex flex-wrap p-5 space-y-5 cursor-pointer">
+            {newArrivals.map((item) => (
+              <NewArrivalsCard product={item} />
+            ))}
+          </div>
         </section>
-
       </div>
     </div>
   );

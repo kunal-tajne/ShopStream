@@ -39,8 +39,8 @@ const CartItems = ({item, showButton}) => {
           <p className="opacity-80">Size : {item?.size}, Starlight Blue</p>
           <p className="opacity-70 mt-2">{item?.product?.brand}</p>
           <div className="flex items-center space-x-2">
-            <p className="font-semibold">${item?.product.price}</p>
-            <p className="line-through opacity-50">${item?.product.discountedPrice}</p>
+            <p className="font-semibold">${item?.product.discountedPrice} </p>
+            <p className="line-through opacity-50">${item?.product.price}</p>
             <p className="text-green-600 font-semibold">({item?.product.discountPercent} % Off)</p>
           </div>
         </div>

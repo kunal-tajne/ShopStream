@@ -6,7 +6,7 @@ const navigation = {
         featured: [
           {
             name: "New Arrivals",
-            href: "/new-arrivals",
+            href: "/",
             imageSrc:
               "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg",
             imageAlt:
@@ -14,7 +14,7 @@ const navigation = {
           },
           {
             name: "Basic Tees",
-            href: "/basic-tees",
+            href: "/",
             imageSrc:
               "https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg",
             imageAlt:
@@ -63,15 +63,15 @@ const navigation = {
         featured: [
           {
             name: "New Arrivals",
-            href: "#",
+            href: "/",
             imageSrc:
               "https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg",
             imageAlt:
               "Drawstring top with elastic loop closure and textured interior padding.",
           },
           {
-            name: "Artwork Tees",
-            href: "#",
+            name: "Take a look at these Tees",
+            href: "/",
             imageSrc:
               "https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-06.jpg",
             imageAlt:
@@ -87,7 +87,6 @@ const navigation = {
               { name: "Sweaters", id:"sweaters", href: "/sweaters"},
               { name: "T-Shirts", id:"tshirts", href: "/tShirts"},
               { name: "Jackets", id:"jackets", href: "/jackets"},
-              { name: "Activewear", id:"activewear", href: "/activewear"},
               { name: "Browse All", id:"browse-all", href: "/browse-all"},
             ],
           },
@@ -104,10 +103,10 @@ const navigation = {
             id: "brands",
             name: "Brands",
             items: [
-              { name: "Re-Arranged", href: "#" },
-              { name: "Counterfeit", href: "#" },
-              { name: "Full Nelson", href: "#" },
-              { name: "My Way", href: "#" },
+              { name: "Banana Republic", href: "/" },
+              { name: "Mercer & Sons", href: "/" },
+              { name: "Ralph Lauren", href: "/" },
+              { name: "Gucci", href: "/" },
             ],
           },
         ],
