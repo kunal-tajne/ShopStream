@@ -12,6 +12,7 @@ import OrderDetails from "../customer/components/Order/OrderDetails";
 import PaymentSuccess from "../customer/components/Payment/PaymentSuccess";
 import AboutUs from "../customer/pages/AboutUs";
 import Contact from "../customer/pages/Contact";
+import Search from "../customer/components/Search/Search";
 
 const CustomerRoutes = () => {
   return (
@@ -46,6 +47,7 @@ const CustomerRoutes = () => {
         <Route path="/about-us" element={<AboutUs />}></Route>
 
         <Route path="/contact" element={<Contact />}></Route>
+        <Route path="/search" element={<Search />}></Route>
       </Routes>
 
       <div>

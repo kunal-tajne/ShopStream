@@ -26,24 +26,35 @@ export default function AuthModal({ handleClose, open }) {
     if (auth.user) handleClose();
   }, [auth.user]);
   return (
-    <>
-    <Modal
-      open={open}
-      onClose={handleClose}
-      aria-labelledby="modal-modal-title"
-      aria-describedby="modal-modal-description"
-      size="large"
+   <>
+  <Modal
+    open={open}
+    onClose={handleClose}
+    aria-labelledby="modal-modal-title"
+    aria-describedby="modal-modal-description"
+    size="large"
+  >
+    <Box
+      className="rounded-md"
+      sx={{
+        ...style,
+        maxWidth: "90vw", // Set maximum width to 90% of viewport width
+        maxHeight: "90vh", // Set maximum height to 90% of viewport height
+        width: "auto", // Allow width to adjust automatically
+        height: "auto", // Allow height to adjust automatically
+        overflowY: "auto", // Add vertical scrollbar if content exceeds container height
+        // Additional responsive styles based on screen size
+        "@media (max-width: 768px)": {
+          // Styles for screens smaller than 768px (e.g., mobile devices)
+          maxWidth: "95vw", // Increase maximum width for smaller screens
+          maxHeight: "95vh", // Increase maximum height for smaller screens
+        },
+      }}
     >
-      <Box className="rounded-md" sx={style}>
-        {location.pathname === "/login" ? (
-          <LoginUserForm />
-        ) : (
-          <RegisterUserForm />
-        )}
-      </Box>
-    </Modal>
-    
-    </>
+      {location.pathname === "/login" ? <LoginUserForm /> : <RegisterUserForm />}
+    </Box>
+  </Modal>
+</>
     
   );
 }

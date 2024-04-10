@@ -48,7 +48,7 @@ export default function LoginUserForm({ handleNext }) {
               required
               id="email"
               name="email"
-              label="Email"
+              label="Email / Username"
               fullWidth
               autoComplete="given-name"
             />
@@ -85,6 +85,9 @@ export default function LoginUserForm({ handleNext }) {
           Register
         </Button>
         </div>
+        <p className="text-sm">Just wanna explore? No problem! Use our Demo Login</p>
+        <p><u>Username</u> : <b>Shopstream</b></p>
+        <p><u>Password</u> : <b>Iloveshopping</b></p>
       </div>
       <Snackbar open={openSnackBar} autoHideDuration={6000} onClose={handleCloseSnakbar}>
         <Alert onClose={handleCloseSnakbar} severity="success" sx={{ width: '100%' }}>

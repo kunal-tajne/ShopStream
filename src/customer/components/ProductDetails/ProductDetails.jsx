@@ -26,20 +26,20 @@ const product = {
   ],
   images: [
     {
-      src: "https://www.forever21.com/dw/image/v2/BFKH_PRD/on/demandware.static/-/Sites-f21-master-catalog/default/dw3e7db897/3_back_750/01262181-01.jpg?sw=200&sh=300",
+      src: "https://raw.githubusercontent.com/kunal-tajne/algostruck/main/1.png",
       alt: "Two each of gray, white, and black shirts laying flat.",
     },
     {
-      src: "https://www.forever21.com/dw/image/v2/BFKH_PRD/on/demandware.static/-/Sites-f21-master-catalog/default/dw08449366/5_detail_750/01262181-01.jpg?sw=200&sh=300",
-      alt: "Model wearing plain black basic tee.",
+      src: "https://raw.githubusercontent.com/kunal-tajne/algostruck/main/4.png",
+      alt: "Model wearing plain white basic tee.",
     },
     {
-      src: "https://www.forever21.com/dw/image/v2/BFKH_PRD/on/demandware.static/-/Sites-f21-master-catalog/default/dw424e34b5/2_side_750/01262181-01.jpg?sw=200&sh=300",
+      src: "https://raw.githubusercontent.com/kunal-tajne/algostruck/main/3.png",
       alt: "Model wearing plain gray basic tee.",
     },
     {
-      src: "https://tailwindui.com/img/ecommerce-images/product-page-02-featured-product-shot.jpg",
-      alt: "Model wearing plain white basic tee.",
+      src: "https://raw.githubusercontent.com/kunal-tajne/algostruck/main/2.png",
+      alt: "Model wearing plain black basic tee.",
     },
   ],
   colors: [
@@ -77,6 +77,7 @@ export default function ProductDetails() {
   const jwt = localStorage.getItem("jwt");
   const [activeImage, setActiveImage] = useState(null);
   const { customersProduct } = useSelector((store) => store);
+  const ratingValue = Math.random() * 2 + 3;
 
   const handleAddToCart = () => {
     const data = { productId, size: selectedSize.name };
@@ -193,7 +194,7 @@ export default function ProductDetails() {
           {/* Product info */}
           <div className="lg:col-span-1 maxt-auto max-w-2xl px-4 pb-16 sm:px-6 lg:max-w-2xl lg:px-8 lg:pb-24">
             <div className="lg:col-span-2">
-              <h1 className="text-lg font-bold tracking-tight text-gray-900 lg:text-3xl sm:text-3xl">
+              <h1 className="text-lg font-bold tracking-tight text-gray-900 lg:text-3xl sm:text-3xl underline mb-2">
                 {customersProduct.product?.brand}
               </h1>
               <h2 className="text-lg font-bold tracking-tight text-gray-900 lg:text-2xl sm:text-3xl opacity-85">
@@ -221,15 +222,14 @@ export default function ProductDetails() {
               <div className="items-center">
                 <div className="mt-3 flex items-center space-x-2">
                   <Rating
-                    name="half-rating-read"
-                    defaultValue={4.5}
+                    defaultValue={ratingValue}
                     precision={0.5}
                     readOnly
                   />
-                  <p className="opacity-50 text-sm">5896+ Ratings</p>
+                  <p className="opacity-50 text-sm">{customersProduct.product?.price + 258}+ Ratings</p>
                 </div>
                 <p className="text-sm font-medium text-indigo-600 hover:text-indigo-500">
-                  1272 Reviews
+                {Math.floor((customersProduct.product?.price + 258) * 0.6)} Reviews
                 </p>
               </div>
 
@@ -237,7 +237,7 @@ export default function ProductDetails() {
                 <h3 className="sr-only">Description</h3>
 
                 <div className="space-y-2">
-                  <p className="text-base text-gray-900 font-serif text-xl">
+                  <p className=" text-gray-900 text-xl font-light">
                   {customersProduct.product?.description}
                   </p>
                 </div>
@@ -308,14 +308,14 @@ export default function ProductDetails() {
                       Choose a size
                     </RadioGroup.Label>
                     <div className="grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4">
-                      {product.sizes.map((size) => (
+                      {customersProduct.product?.sizes.map((size) => (
                         <RadioGroup.Option
                           key={size.name}
                           value={size}
-                          disabled={!size.inStock}
+                          disabled={!size.quantity}
                           className={({ active }) =>
                             classNames(
-                              size.inStock
+                              size.quantity
                                 ? "cursor-pointer bg-white text-gray-900 shadow-sm"
                                 : "cursor-not-allowed bg-gray-50 text-gray-200",
                               active ? "ring-2 ring-indigo-500" : "",
@@ -328,7 +328,7 @@ export default function ProductDetails() {
                               <RadioGroup.Label as="span">
                                 {size.name}
                               </RadioGroup.Label>
-                              {size.inStock ? (
+                              {size.quantity ? (
                                 <span
                                   className={classNames(
                                     active ? "border" : "border-2",
@@ -430,30 +430,30 @@ export default function ProductDetails() {
                   Product Ratings
                 </h1>
                 <div className="flex items-center space-x-5">
-                  <Rating value={4.6} precision={0.5} read-only />
-                  <p className=" opacity-80">5980 Ratings</p>
+                  <Rating value={ratingValue} precision={0.5} read-only />
+                  <p className=" opacity-80"> {customersProduct.product?.ratings}  Ratings</p>
                 </div>
                 <ProductRatings
                   rating={"Excellent"}
-                  value={80}
+                  value={Math.random() * 21 + 60}
                   color={"success"}
                 />
                 <ProductRatings
                   rating={"Very Good"}
-                  value={60}
+                  value={Math.random() * 21 + 75}
                   color={"success"}
                 />
                 <ProductRatings
                   rating={"Good"}
-                  value={70}
+                  value={Math.random() * 21 + 30}
                   color={"secondary"}
                 />
                 <ProductRatings
                   rating={"Average"}
-                  value={40}
+                  value={Math.random() * 21 + 10}
                   color={"warning"}
                 />
-                <ProductRatings rating={"Poor"} value={20} color={"error"} />
+                <ProductRatings rating={"Poor"} value={Math.random() * 21 + 5} color={"error"} />
               </Grid>
             </Grid>
           </div>
