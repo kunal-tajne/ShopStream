@@ -30,7 +30,7 @@ const navigation = {
               { name: "Denim",id:"denim", href: "/denim" },
               { name: "T-Shirts",id:"t-shirts", href: "/t-shirts" },
               { name: "Activewear",id:"activewear", href: "/activewear" },
-              { name: "Browse All",id:"browse-all", href: "/browse-all" },
+              { name: "Browse All",id:"browse-all", href: "/browseall" },
             ],
           },
           {
