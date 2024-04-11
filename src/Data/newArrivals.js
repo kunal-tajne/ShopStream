@@ -30,7 +30,7 @@ export const newArrivals=[
     },
     {
         "imageUrl": "https://raw.githubusercontent.com/kunal-tajne/ShopStream/main/src/Data/newArrivalsData/NewArrival2.webp",
-        "productLink":"https://shopstream-by-kunaltajne.vercel.app/product/1",
+        "productLink":"https://shopstream-by-kunaltajne.vercel.app/product/108",
         "brand": "Mercer and Sons",
         "title": "Mineral Wash Lounge Outfit Round Neck",
         "color": "Yellow",
@@ -59,7 +59,7 @@ export const newArrivals=[
     },
     {
         "imageUrl": "https://raw.githubusercontent.com/kunal-tajne/ShopStream/main/src/Data/newArrivalsData/NewArrival3.webp",
-        "productLink":"https://shopstream-by-kunaltajne.vercel.app/product/1",
+        "productLink":"https://shopstream-by-kunaltajne.vercel.app/product/115",
         "brand": "Lacausa",
         "title": "Plus Size Metallic Jacquard Maxi Dress",
         "color": "TURQUOISE/MULTI",
@@ -88,7 +88,7 @@ export const newArrivals=[
     },
     {
         "imageUrl": "https://raw.githubusercontent.com/kunal-tajne/ShopStream/main/src/Data/newArrivalsData/NewArrival4.png",
-        "productLink":"https://shopstream-by-kunaltajne.vercel.app/product/1",
+        "productLink":"https://shopstream-by-kunaltajne.vercel.app/product/60",
         "brand": "GUCCI",
         "title": "GG Flocked Print Cotton Polo Top",
         "color": "White",
@@ -117,7 +117,7 @@ export const newArrivals=[
     },
     {
         "imageUrl": "https://raw.githubusercontent.com/kunal-tajne/ShopStream/main/src/Data/newArrivalsData/NewArrival5.jpeg",
-        "productLink":"https://shopstream-by-kunaltajne.vercel.app/product/1",
+        "productLink":"https://shopstream-by-kunaltajne.vercel.app/product/119",
         "brand": "Harvest and Mill",
         "title": "Double-Breasted Peak Lapel Blazer",
         "color": "Grey",
@@ -175,7 +175,7 @@ export const newArrivals=[
     },
     {
         "imageUrl": "https://raw.githubusercontent.com/kunal-tajne/ShopStream/main/src/Data/newArrivalsData/NewArrival7.jpeg",
-        "productLink":"https://shopstream-by-kunaltajne.vercel.app/product/1",
+        "productLink":"https://shopstream-by-kunaltajne.vercel.app/product/121",
         "brand": "Mission Workshop",
         "title": "Distressed Denim Trucker Jacket",
         "color": "Medium Denim",
@@ -204,7 +204,7 @@ export const newArrivals=[
     },
     {
         "imageUrl": "https://raw.githubusercontent.com/kunal-tajne/ShopStream/main/src/Data/newArrivalsData/NewArrival8.webp",
-        "productLink":"https://shopstream-by-kunaltajne.vercel.app/product/1",
+        "productLink":"https://shopstream-by-kunaltajne.vercel.app/product/135",
         "brand": "Rogue Territory",
         "title": "Long-Sleeve Cargo Shacket Exclusive",
         "color": "Blue",
@@ -233,7 +233,7 @@ export const newArrivals=[
     },
     {
         "imageUrl": "https://raw.githubusercontent.com/kunal-tajne/ShopStream/main/src/Data/newArrivalsData/NewArrival9.jpeg",
-        "productLink":"https://shopstream-by-kunaltajne.vercel.app/product/1",
+        "productLink":"https://shopstream-by-kunaltajne.vercel.app/product/139",
         "brand": "Schott NYC",
         "title": "Geo Print Zip-Up Polo Shirt Loose Fit",
         "color": "Black/Deep Taupe",
@@ -257,7 +257,7 @@ export const newArrivals=[
           "quantity": 100,
           "topLevelCategory": "Men",
           "secondLevelCategory": "Clothing",
-          "thirdLevelCategory": "mens_kurta",
+          "thirdLevelCategory": "tshirts",
           "description":"A knit polo shirt featuring an allover geometric print, basic collar, zip-up front closure, and short sleeves."
     }
 ]
