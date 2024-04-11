@@ -4,7 +4,7 @@ export const womenCollection=[
         "imageUrl": "https://raw.githubusercontent.com/kunal-tajne/algostruck/main/Active%20Seamless%20Biker%20Shorts.jpg",
         "productLink":"https://shopstream-by-kunaltajne.vercel.app/product/131",
         "brand": "H&M",
-        "title": "Active Seamless Biker Shorts",
+        "title": "Active Seamless Biker Shorts Black",
 
     },
     {
@@ -18,7 +18,7 @@ export const womenCollection=[
         "imageUrl": "https://raw.githubusercontent.com/kunal-tajne/algostruck/main/src/main/resources/Oscar%20the%20Grouch%20Graphic%20Tee.jpeg",
         "productLink":"https://shopstream-by-kunaltajne.vercel.app/product/122",
         "brand": "Forever 21",
-        "title": "Oscar the Grouch Graphic Tee",
+        "title": "Oscar the Grouch Graphic Tee Printed",
 
     },
     {
@@ -32,7 +32,7 @@ export const womenCollection=[
         "imageUrl": "https://raw.githubusercontent.com/kunal-tajne/algostruck/main/Sesame%20Street%20Graphic%20Pullover.jpg",
         "productLink":"https://shopstream-by-kunaltajne.vercel.app/product/124",
         "brand": "Gucci",
-        "title": "Sesame Street Graphic Pullover",
+        "title": "Sesame Street Graphic Pullover Blue",
 
     },
     {
@@ -49,9 +49,5 @@ export const womenCollection=[
         "title": "Double-Breasted Peak Lapel Blazer",
 
     }
-
-
-
-
 
 ]

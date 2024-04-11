@@ -9,9 +9,9 @@ export const HomeSectionCard = ({ product}) => {
   return (
     <a href={product.productLink} onClick={handleClick} className="cursor-pointer">
     <div className="cursor-pointer flex flex-col items-center bg-white rounded-lg shadow-lg overflow-hidden w-[15rem] mx-3 border">
-      <div className="h-[13rem] w-[10rem]">
+      <div className="h-[16rem] w-full">
         <img
-          className="object-cover object-top w-full h-full"
+          className=" object-cover object-top w-full h-full"
           src={product.imageUrl}
           alt=""
         />
