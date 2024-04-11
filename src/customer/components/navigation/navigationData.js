@@ -48,11 +48,11 @@ const navigation = {
             id: "brands",
             name: "Brands",
             items: [
+              { name: "H&M", id:"hm", href: "/hm"},
+              { name: "Zara", id:"zara", href: "/zara"},
               { name: "Gucci", id:"gucci", href: "/gucci"},
               { name: "Lacausa", id:"lacausa", href: "/lacausa"},
               { name: "Forever 21",id:"forever-21", href: "/forever-21"},
-              { name: "Mercer & Sons", id:"mercer-and-sons", href: "/mercer-and-sons"},
-              { name: "Harvest and Mill", id:"harvest-and-mill", href: "/harvest-and-mill"},
             ],
           },
         ],
