@@ -14,13 +14,13 @@ export const Footer = () => {
             Quick Links
           </Typography>
           <div>
-            <Button variant="h6">
-              Contact
+            <Button variant="h6" onClick={"/"}>
+            <a href="https://shopstream-by-kunaltajne.vercel.app/contact">Contact</a> 
             </Button>
           </div>
           <div>
             <Button variant="h6">
-              About Us
+            <a href="https://shopstream-by-kunaltajne.vercel.app/about-us">About Us</a> 
             </Button>
           </div>
         </Grid>
