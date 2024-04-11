@@ -10,87 +10,106 @@ export const Footer = () => {
         sx={{ bgcolor: "white", color: "black", py: 3 }}
       >
         <Grid item xs={12} sm={6} md={3}>
-          <Typography className="pb-3 pt-3" variant="h6" style={{ fontWeight: 'bold' }}>
+          <Typography
+            className="pb-3 pt-3"
+            variant="h6"
+            style={{ fontWeight: "bold" }}
+          >
             Quick Links
           </Typography>
           <div>
             <Button variant="h6" onClick={"/"}>
-            <a href="https://shopstream-by-kunaltajne.vercel.app/contact">Contact</a> 
+              <a href="https://shopstream-by-kunaltajne.vercel.app/contact">
+                Contact
+              </a>
             </Button>
           </div>
           <div>
             <Button variant="h6">
-            <a href="https://shopstream-by-kunaltajne.vercel.app/about-us">About Us</a> 
+              <a href="https://shopstream-by-kunaltajne.vercel.app/about-us">
+                About Us
+              </a>
             </Button>
           </div>
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
-          <Typography className="pb-3 pt-3" variant="h6" style={{ fontWeight: 'bold' }}>
+          <Typography
+            className="pb-3 pt-3"
+            variant="h6"
+            style={{ fontWeight: "bold" }}
+          >
             Online Shopping
           </Typography>
           <div>
             <Button variant="h6">
-              Men
+              <a href="https://shopstream-by-kunaltajne.vercel.app/men/clothing/browse-all">
+                Men
+              </a>
             </Button>
           </div>
           <div>
             <Button variant="h6">
-              Women
-            </Button>
-          </div>
-          <div>
-            <Button variant="h6">
-              Beauty
-            </Button>
-          </div>
-        </Grid>
-        <Grid item xs={12} sm={6} md={3}>
-          <Typography className="pb-3 pt-3" variant="h6" style={{ fontWeight: 'bold' }}>
-            Policies
-          </Typography>
-          <div>
-            <Button variant="h6">
-              Disclaimer
-            </Button>
-          </div>
-          <div>
-            <Button variant="h6">
-              Privacy Policy
-            </Button>
-          </div>
-          <div>
-            <Button variant="h6">
-              Terms Of Use
-            </Button>
-          </div>
-          <div>
-            <Button variant="h6">
-              Cancellation and Returns
+              <a href="https://shopstream-by-kunaltajne.vercel.app/women/clothing/browseall">
+                Women
+              </a>
             </Button>
           </div>
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
-          <Typography className="pb-3 pt-3" variant="h6" style={{ fontWeight: 'bold' }}>
-            Connect Here
+          <Typography
+            className="pb-3 pt-3"
+            variant="h6"
+            style={{ fontWeight: "bold" }}
+          >
+            <a href="/">Policies</a>
           </Typography>
           <div>
             <Button variant="h6">
-              Instagram
+              <a href="/">Disclaimer</a>
             </Button>
           </div>
           <div>
             <Button variant="h6">
-              Facebook
+              <a href="/">Privacy Policy</a>
             </Button>
           </div>
           <div>
             <Button variant="h6">
-              Twitter
+              <a href="/">Terms Of Use</a>
             </Button>
           </div>
           <div>
             <Button variant="h6">
-              Pinterest
+              <a href="/">Cancellation and Returns</a>
+            </Button>
+          </div>
+        </Grid>
+        <Grid item xs={12} sm={6} md={3}>
+          <Typography
+            className="pb-3 pt-3"
+            variant="h6"
+            style={{ fontWeight: "bold" }}
+          >
+            <a href="/">Connect Here</a>
+          </Typography>
+          <div>
+            <Button variant="h6">
+              <a href="/">Instagram</a>
+            </Button>
+          </div>
+          <div>
+            <Button variant="h6">
+              <a href="/">Facebook</a>
+            </Button>
+          </div>
+          <div>
+            <Button variant="h6">
+              <a href="/">Twitter</a>
+            </Button>
+          </div>
+          <div>
+            <Button variant="h6">
+              <a href="/">Pinterest</a>
             </Button>
           </div>
         </Grid>
