@@ -11,6 +11,7 @@ import AuthModal from "../components/Auth/AuthModal";
 import FirstLogin from "../components/Auth/Firstlogin";
 import FirstLoginAuthModal from "../components/Auth/FirstLoginAuthModal";
 import { useSelector } from "react-redux";
+import { womenCollection } from "../../Data/womenCollection";
 
 export const HomePage = () => {
   const [showLoginForm, setShowLoginForm] = useState(false);
@@ -43,7 +44,7 @@ export const HomePage = () => {
           CardData={HomeSectionCard}
         />
         <HomeSectionCarousel
-          data={newArrivals}
+          data={womenCollection}
           sectionName={"Women's Latest Collection"}
           CardData={HomeSectionCard}
         />

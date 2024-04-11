@@ -1,10 +1,3 @@
-
-const importAll = (r) => r.keys().map(r);
-
-const imagesContext = require.context("./newArrivalsData", false, /\.(jpg|jpeg|png|svg|webp)$/);
-
-const images = importAll(imagesContext);
-
 export const newArrivals=[
     {
         "imageUrl": "https://raw.githubusercontent.com/kunal-tajne/ShopStream/main/src/Data/newArrivalsData/NewArrival1.jpeg",
