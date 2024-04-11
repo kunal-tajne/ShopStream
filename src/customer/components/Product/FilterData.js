@@ -13,6 +13,7 @@ export const color = [
     id: "color",
     name: "Color",
     options: [
+    {value: "black", label: "Black"},
     {value: "white", label: "White"},
     {value: "beige", label: "Beige"},
     {value: "blue", label: "Blue"},
@@ -20,15 +21,6 @@ export const color = [
     {value: "green", label: "Green"},
     {value: "purple", label: "Purple"},
     {value: "yellow", label: "Yellow"},
-    ],
-    },
-    {
-    id: "size",
-    name: "Size",
-    options: [
-    {value: "S", label: "S"},
-    {value: "M", label: "M"},
-    {value: "L", label: "L"},
     ],
     },
       {
@@ -57,6 +49,15 @@ export const color = [
         {value: "80", label: "80% and above"},
         ],
         },
+        {
+          id: "size",
+          name: "Size",
+          options: [
+          {value: "S", label: "S"},
+          {value: "M", label: "M"},
+          {value: "L", label: "L"},
+          ],
+          },
     ];
     export const singleFilter = [
     {
