@@ -14,6 +14,7 @@ export const color = [
     name: "Color",
     options: [
     {value: "black", label: "Black"},
+    {value: "grey", label: "Grey"},
     {value: "white", label: "White"},
     {value: "beige", label: "Beige"},
     {value: "blue", label: "Blue"},
